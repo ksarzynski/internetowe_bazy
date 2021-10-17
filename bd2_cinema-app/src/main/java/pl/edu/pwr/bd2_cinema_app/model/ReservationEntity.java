@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,4 +22,11 @@ public class ReservationEntity {
     private int reservationId;
     private Date date;
     private Double ticketPrice;
+    @ManyToMany
+    @JoinTable(
+            name= "reservation_seat",
+            joinColumns = @JoinColumn(name = "reservation_id"),
+            inverseJoinColumns = @JoinColumn(name = "seat_id")
+    )
+    private List<SeatEntity> seats;
 }

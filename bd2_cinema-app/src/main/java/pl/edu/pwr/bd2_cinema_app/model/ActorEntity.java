@@ -20,6 +20,7 @@ public class ActorEntity {
     @GeneratedValue
     private int actorId;
     private String name;
+    private String description;
     @ManyToMany(mappedBy = "actorsWhoPlayedInThisMovie")
     private List<MovieEntity> moviesInWhichTheActorPlayed;
 }

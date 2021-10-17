@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,4 +20,11 @@ public class TicketEntity {
     @GeneratedValue
     private int ticketId;
     private Double price;
+    @ManyToMany
+    @JoinTable(
+            name= "ticket_seat",
+            joinColumns = @JoinColumn(name = "ticket_id"),
+            inverseJoinColumns = @JoinColumn(name = "seat_id")
+    )
+    private List<SeatEntity> seats;
 }

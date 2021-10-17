@@ -30,6 +30,9 @@ public class MovieEntity {
     @OneToMany(targetEntity = SeanceEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_seance_foreign_key", referencedColumnName = "movieId")
     private List<SeanceEntity> seances;
+    @OneToMany(targetEntity = ReviewEntity.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "movie_review_foreign_key", referencedColumnName = "movieId")
+    private List<ReviewEntity> reviews;
     @ManyToMany
     @JoinTable(
             name= "movie_actor",

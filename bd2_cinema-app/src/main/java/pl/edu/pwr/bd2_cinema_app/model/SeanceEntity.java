@@ -21,7 +21,7 @@ public class SeanceEntity {
     @GeneratedValue
     private int seanceId;
     private Date date;
-    private Integer noTickets;
+    private Integer noAvailableSeats;
     private Double price;
     @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seanceId")
