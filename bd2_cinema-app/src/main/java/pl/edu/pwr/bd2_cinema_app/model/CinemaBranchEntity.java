@@ -20,7 +20,9 @@ public class CinemaBranchEntity {
     @GeneratedValue
     private int cinemaBranchId;
     private String name;
-    private String localization;
+    // address
+    private String city;
+    private String address;
     @OneToMany(targetEntity = CinemaHallEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cinema_branch_cinema_hall_foreign_key", referencedColumnName = "cinemaBranchId")
     private List<CinemaHallEntity> cinemaHalls;

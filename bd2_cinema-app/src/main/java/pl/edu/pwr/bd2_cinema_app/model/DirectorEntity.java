@@ -13,15 +13,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "ACTORS")
-public class ActorEntity {
+@Table(name = "DIRECTORS")
+public class DirectorEntity {
 
     @Id
     @GeneratedValue
-    private int actorId;
+    private int directorId;
     private String firstname;
     private String surname;
     private String description;
-    @ManyToMany(mappedBy = "actorsWhoPlayedInThisMovie")
-    private List<MovieEntity> moviesInWhichTheActorPlayed;
+    @OneToMany(targetEntity = MovieEntity.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "director_seance_foreign_key", referencedColumnName = "directorId")
+    private List<MovieEntity> directedMovies;
 }

@@ -20,7 +20,9 @@ public class SeanceEntity {
     @Id
     @GeneratedValue
     private int seanceId;
-    private Date date;
+    // We assume that its proper class to store date and time. It may be changed in the future
+    private Date startDate;
+    private Date endDate;
     private Integer noAvailableSeats;
     private Double price;
     @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.ALL)

@@ -19,7 +19,8 @@ public class SeatEntity {
     @Id
     @GeneratedValue
     private int seatId;
-    private String name;
+    private String row;
+    private String column;
     private Boolean isPremium;
     private Double seatFee;
     @ManyToMany(mappedBy = "seats")
