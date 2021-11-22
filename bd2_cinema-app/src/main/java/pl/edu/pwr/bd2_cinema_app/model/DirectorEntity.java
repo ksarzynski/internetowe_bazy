@@ -18,11 +18,11 @@ public class DirectorEntity {
 
     @Id
     @GeneratedValue
-    private int directorId;
+    private int director_id;
     private String firstname;
     private String surname;
     private String description;
     @OneToMany(targetEntity = MovieEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "director_seance_foreign_key", referencedColumnName = "directorId")
+    @JoinColumn(name = "director_seance_foreign_key", referencedColumnName = "director_id")
     private List<MovieEntity> directedMovies;
 }

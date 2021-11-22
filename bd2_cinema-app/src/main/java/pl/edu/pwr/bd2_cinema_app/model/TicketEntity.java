@@ -18,7 +18,7 @@ public class TicketEntity {
 
     @Id
     @GeneratedValue
-    private int ticketId;
+    private int ticket_id;
     private Double price;
     @ManyToMany
     @JoinTable(
@@ -26,5 +26,5 @@ public class TicketEntity {
             joinColumns = @JoinColumn(name = "ticket_id"),
             inverseJoinColumns = @JoinColumn(name = "seat_id")
     )
-    private List<SeatEntity> seats;
+    private List<SeatEntity> ticketSeats;
 }

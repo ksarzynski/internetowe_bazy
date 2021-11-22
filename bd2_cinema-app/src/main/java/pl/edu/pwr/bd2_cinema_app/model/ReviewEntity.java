@@ -20,7 +20,7 @@ public class ReviewEntity {
 
     @Id
     @GeneratedValue
-    private int reviewId;
+    private int review_id;
     private Integer value;
     private String description;
 }

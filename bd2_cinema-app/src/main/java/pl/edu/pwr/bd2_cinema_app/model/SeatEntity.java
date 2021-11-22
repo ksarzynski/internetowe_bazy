@@ -18,13 +18,13 @@ public class SeatEntity {
 
     @Id
     @GeneratedValue
-    private int seatId;
-    private String row;
-    private String column;
-    private Boolean isPremium;
-    private Double seatFee;
-    @ManyToMany(mappedBy = "seats")
+    private int seat_id;
+    private String myRowNumber;
+    private String myColumnNumber;
+    private boolean isPremium;
+    private float seatFee;
+    @ManyToMany(mappedBy = "reservationSeats")
     private List<ReservationEntity> reservationsThatIncludeThisSeat;
-    @ManyToMany(mappedBy = "seats")
+    @ManyToMany(mappedBy = "ticketSeats")
     private List<TicketEntity> ticketsThatIncludeThisSeat;
 }

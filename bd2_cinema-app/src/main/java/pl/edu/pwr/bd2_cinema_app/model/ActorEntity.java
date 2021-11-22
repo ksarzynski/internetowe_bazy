@@ -18,7 +18,7 @@ public class ActorEntity {
 
     @Id
     @GeneratedValue
-    private int actorId;
+    private int actor_id;
     private String firstname;
     private String surname;
     private String description;

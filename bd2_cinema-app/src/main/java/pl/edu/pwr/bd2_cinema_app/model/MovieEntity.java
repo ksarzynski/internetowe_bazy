@@ -18,7 +18,7 @@ public class MovieEntity {
 
     @Id
     @GeneratedValue
-    private int movieId;
+    private int movie_id;
     private String name;
     private String category;
     private Integer duration;
@@ -28,10 +28,10 @@ public class MovieEntity {
     private Double rating;
     private Double basePrice;
     @OneToMany(targetEntity = SeanceEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "movie_seance_foreign_key", referencedColumnName = "movieId")
+    @JoinColumn(name = "movie_seance_foreign_key", referencedColumnName = "movie_id")
     private List<SeanceEntity> seances;
     @OneToMany(targetEntity = ReviewEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "movie_review_foreign_key", referencedColumnName = "movieId")
+    @JoinColumn(name = "movie_review_foreign_key", referencedColumnName = "movie_id")
     private List<ReviewEntity> reviews;
     @ManyToMany
     @JoinTable(

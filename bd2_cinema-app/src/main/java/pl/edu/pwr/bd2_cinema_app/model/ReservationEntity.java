@@ -19,7 +19,7 @@ public class ReservationEntity {
 
     @Id
     @GeneratedValue
-    private int reservationId;
+    private int reservation_id;
     private Date date;
     private Double ticketPrice;
     @ManyToMany
@@ -28,5 +28,5 @@ public class ReservationEntity {
             joinColumns = @JoinColumn(name = "reservation_id"),
             inverseJoinColumns = @JoinColumn(name = "seat_id")
     )
-    private List<SeatEntity> seats;
+    private List<SeatEntity> reservationSeats;
 }

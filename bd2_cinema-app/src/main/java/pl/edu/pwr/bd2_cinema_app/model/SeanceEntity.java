@@ -19,16 +19,16 @@ public class SeanceEntity {
 
     @Id
     @GeneratedValue
-    private int seanceId;
+    private int seance_id;
     // We assume that its proper class to store date and time. It may be changed in the future
     private Date startDate;
     private Date endDate;
     private Integer noAvailableSeats;
     private Double price;
     @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seanceId")
+    @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seance_id")
     private List<ReservationEntity> reservations;
     @OneToMany(targetEntity = TicketEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "seance_ticket_foreign_key", referencedColumnName = "seanceId")
+    @JoinColumn(name = "seance_ticket_foreign_key", referencedColumnName = "seance_id")
     private List<TicketEntity> tickets;
 }

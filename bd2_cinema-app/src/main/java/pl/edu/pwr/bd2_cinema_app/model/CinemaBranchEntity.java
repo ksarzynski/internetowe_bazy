@@ -18,12 +18,12 @@ public class CinemaBranchEntity {
 
     @Id
     @GeneratedValue
-    private int cinemaBranchId;
+    private int cinema_branch_id;
     private String name;
     // address
     private String city;
     private String address;
     @OneToMany(targetEntity = CinemaHallEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cinema_branch_cinema_hall_foreign_key", referencedColumnName = "cinemaBranchId")
+    @JoinColumn(name = "cinema_branch_cinema_hall_foreign_key", referencedColumnName = "cinema_branch_id")
     private List<CinemaHallEntity> cinemaHalls;
 }
