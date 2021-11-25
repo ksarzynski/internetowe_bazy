@@ -34,4 +34,20 @@ public class UserEntity {
     @OneToMany(targetEntity = TicketEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_ticket_foreign_key", referencedColumnName = "userId")
     private List<TicketEntity> tickets;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
