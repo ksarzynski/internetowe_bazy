@@ -30,5 +30,9 @@ export class CinemaListComponent implements OnInit {
 
   goToHalls(id: string) {
   }
+
+  goToSeances(id: string) {
+
+  }
 }
 
