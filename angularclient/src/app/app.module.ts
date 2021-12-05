@@ -10,7 +10,9 @@ import { UserService } from './service/user.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { CinemaListComponent } from './cinema-list/cinema-list.component';
+import { CinemaListComponent } from './list/cinema-list/cinema-list.component';
+import { HallListComponent } from './list/hall-list/hall-list.component';
+import { SeancesListComponent } from './list/seances-list/seances-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CinemaListComponent } from './cinema-list/cinema-list.component';
     LoginFormComponent,
     LoginComponent,
     MainpageComponent,
-    CinemaListComponent
+    CinemaListComponent,
+    HallListComponent,
+    SeancesListComponent
   ],
   imports: [
     BrowserModule,

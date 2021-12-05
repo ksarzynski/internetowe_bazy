@@ -7,6 +7,7 @@
         <th scope="col">name</th>
         <th scope="col">city</th>
         <th scope="col">address</th>
+        <th scope="col">opcje</th>
       </tr>
       </thead>
       <tbody>
@@ -15,6 +16,9 @@
         <td>{{ cinema.name}}</td>
         <td>{{ cinema.city }}</td>
         <td>{{ cinema.address}}</td>
+        <td><button title="sprawdź sale" (click)="goToSeances(cinema.id)">sprawdź seanse
+        </button>
+        </td>
       </tr>
       </tbody>
     </table>

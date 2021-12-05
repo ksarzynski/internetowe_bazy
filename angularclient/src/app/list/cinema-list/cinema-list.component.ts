@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {cinema} from "../model/cinema/cinema";
+import {cinema} from "../../model/cinema/cinema";
 import {Router} from "@angular/router";
-import {CinemaServiceService} from "../service/cinema-service.service";
+import {CinemaServiceService} from "../../service/cinema-service.service";
 
 @Component({
   selector: 'app-cinema-list',
@@ -11,10 +11,12 @@ import {CinemaServiceService} from "../service/cinema-service.service";
 export class CinemaListComponent implements OnInit {
   cinemas: cinema[] = []
 
-  constructor(private cinemaService: CinemaServiceService, private router: Router) { }
+  constructor(private cinemaService: CinemaServiceService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getCinemas();
+
     this.cinemas;
   }
 
@@ -25,4 +27,8 @@ export class CinemaListComponent implements OnInit {
       console.log("dupa");
     });
   }
+
+  goToHalls(id: string) {
+  }
 }
+
