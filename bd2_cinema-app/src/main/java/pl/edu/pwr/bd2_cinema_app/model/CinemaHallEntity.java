@@ -28,4 +28,8 @@ public class CinemaHallEntity {
     @OneToMany(targetEntity = SeatEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cinema_hall_seat_foreign_key", referencedColumnName = "cinemaHallId")
     private List<SeatEntity> seats;
+
+    public List<SeanceEntity> getSeances() {
+        return seances;
+    }
 }
