@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {cinema} from "../model/cinema/cinema";
-import {User} from "../model/user";
+import {cinema} from "../../model/cinema/cinema";
 import {Observable} from "rxjs";
 
 @Injectable({

@@ -19,7 +19,7 @@ public class MovieController {
         this.movieRepository = movieRepository;
     }
 
-    @GetMapping("/alL_movies")
+    @GetMapping("/all_movies")
     public Iterable<MovieEntity> getAllMovies(){
         return movieRepository.findAll();
     }

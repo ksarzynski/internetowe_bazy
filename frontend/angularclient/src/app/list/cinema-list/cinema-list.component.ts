@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {cinema} from "../../model/cinema/cinema";
 import {Router} from "@angular/router";
-import {CinemaServiceService} from "../../service/cinema-service.service";
+import {CinemaServiceService} from "../../service/cinema-service/cinema-service.service";
 
 @Component({
   selector: 'app-cinema-list',
@@ -21,10 +21,8 @@ export class CinemaListComponent implements OnInit {
   }
 
   private getCinemas() {
-    console.log("dupa1");
     this.cinemaService.listCinemas().subscribe(data => {
       this.cinemas = data;
-      console.log("dupa");
     });
   }
 
