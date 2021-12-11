@@ -1,0 +1,35 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">tytuł</th>
+        <th scope="col">reżyser</th>
+        <th scope="col">gatunek</th>
+        <th scope="col">ocena</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{ movie.name}}</td>
+        <td>{{ movie.director}}</td>
+        <td>{{ movie.category}}</td>
+        <td>{{ movie.rating}}</td>
+        <td><button title="informacje" (click)="openModal('custom-modal-1')">informacje</button></td>
+
+        <div>
+          <jw-modal id="custom-modal-1">
+            <h1>Informacje o filmie</h1>
+            <label>{{movie.description}}</label>
+            <form>
+            </form>
+            <button (click)="closeModal('custom-modal-1');">Zamknij</button>
+          </jw-modal>
+        </div>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

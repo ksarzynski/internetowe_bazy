@@ -8,6 +8,7 @@ import {HeadersPrefix} from '../enum/headers.enum';
 //import {NotificationsEnum} from '../enum/notifications.enum';
 //import {NotificationsService} from '../service/notifications/notifications.service';
 import {Subscription} from 'rxjs';
+import {error} from "@angular/compiler/src/util";
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -25,12 +26,19 @@ export class LoginFormComponent implements OnInit {
   }
 
   onLogin(user: User): void {
+    console.log(user);
       this.authenticationService.loginUser(user).subscribe(
-        (response: HttpResponse<User>) => {
-          const token = response.headers.get(HeadersPrefix.JWT_TOKEN);
-          this.authenticationService.saveToken(token || '{}');
-          console.log(token);
-          this.authenticationService.saveUser(response.body);
+        (response: HttpResponse<any>) => {
+          const token = response.body["token"];
+          if(token === null) {
+
+          }else {
+            this.authenticationService.saveToken(token || '{}');
+            console.log(response.body["token"]);
+            //this.authenticationService.saveUser(response.body);
+          }
+        },(error) => {
+          console.log("nie zalogowano")
         }
       )
   }

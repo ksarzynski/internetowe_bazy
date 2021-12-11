@@ -17,10 +17,8 @@ export class AuthenticationService {
     this.token = '';
     this.loggedInUserEmail = '';
   }
-  public loginUser(user: User): Observable<HttpResponse<User>> {
-    console.log("dziala 3");
+  public loginUser(user: User): Observable<HttpResponse<any>> {
     return this.http.post<User>(`https://localhost:443/authenticate`, user, { observe: 'response' });
-
   }
   // tslint:disable-next-line:typedef
   public clearCache() {

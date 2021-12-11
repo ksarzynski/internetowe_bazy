@@ -1,6 +1,7 @@
 package pl.edu.pwr.bd2_cinema_app.dto;
 
 public class UserDTO {
+    private String userID;
     private String username;
     private String password;
     private String email;
@@ -8,6 +9,14 @@ public class UserDTO {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public void setUsername(String username) {

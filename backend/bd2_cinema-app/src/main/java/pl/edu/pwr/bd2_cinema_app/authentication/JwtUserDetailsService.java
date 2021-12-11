@@ -25,13 +25,17 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByUsername(username);
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("Bad username: " + username);
         }
         return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
+    
+    public int getUserIdByUsername(String userName) {
+        return userRepository.findByUsername(userName).getUser_id();
+    }
 
-    public UserEntity save(UserDTO user){
+    public UserEntity save(UserDTO user) {
         UserEntity newUser = new UserEntity();
         newUser.setUsername(user.getUsername());
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
@@ -39,3 +43,62 @@ public class JwtUserDetailsService implements UserDetailsService {
         return userRepository.save(newUser);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// zmienneGlobalne.ts
+
+export const user: User = new User();
+
+updateUser(userZApi: User): void {
+        user = userZApi
+        
+        // jak nie zadziala
+        user.id = userZApi.id
+}
+
+
+        
+        
+        
+///////////////////////////////
+import {user} from 'zmienneGlobalne'
+
+
+@Component(
+        //dasd/as
+)
+export class FooComponent implements NgOnInit {
+
+//    const myUser: User
+
+    ngOnInit() {
+//        this.myUser = user
+    }
+
+    constructor() {
+    }
+
+    zrobCos(): void {
+        console.log(user.id)
+    }
+}
+
+*/
+
+
+
