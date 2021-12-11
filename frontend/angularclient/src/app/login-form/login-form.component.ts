@@ -9,8 +9,10 @@ import {HeadersPrefix} from '../enum/headers.enum';
 //import {NotificationsService} from '../service/notifications/notifications.service';
 import {Subscription} from 'rxjs';
 import {error} from "@angular/compiler/src/util";
+import {environment} from "../../environments/environment";
+
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-register-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
@@ -30,15 +32,19 @@ export class LoginFormComponent implements OnInit {
       this.authenticationService.loginUser(user).subscribe(
         (response: HttpResponse<any>) => {
           const token = response.body["token"];
-          if(token === null) {
-
-          }else {
+          const user_id = response.body["userId"];
+          const username = response.body["username"];
+          environment.userUsername = username;
+          environment.userID = user_id;
+          console.log(username);
             this.authenticationService.saveToken(token || '{}');
             console.log(response.body["token"]);
-            //this.authenticationService.saveUser(response.body);
-          }
+            console.log(environment.userID);
+
+            this.router.navigateByUrl("");
+            window.confirm("Zalogowano użytkownika "+ username);
         },(error) => {
-          console.log("nie zalogowano")
+          window.confirm("Błędne dane logowania");
         }
       )
   }

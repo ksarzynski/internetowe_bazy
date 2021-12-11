@@ -8,13 +8,15 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserService } from './service/user/user.service';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { CinemaListComponent } from './list/cinema-list/cinema-list.component';
 import { HallListComponent } from './list/hall-list/hall-list.component';
 import { SeancesListComponent } from './list/seances-list/seances-list.component';
 import { MoviesListComponent } from './list/movies-list/movies-list.component';
 import {ModalModule} from "./modal/_modal";
+import { RegisterComponent } from './register/register.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,13 @@ import {ModalModule} from "./modal/_modal";
     UserListComponent,
     UserFormComponent,
     LoginFormComponent,
-    LoginComponent,
     MainpageComponent,
     CinemaListComponent,
     HallListComponent,
     SeancesListComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +38,14 @@ import {ModalModule} from "./modal/_modal";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule
+    ModalModule,
+    MatToolbarModule
+  ],
+  exports: [
+    MatToolbarModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

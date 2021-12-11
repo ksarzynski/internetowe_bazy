@@ -33,13 +33,9 @@ public class JwtAuthenticationController {
                 .loadUserByUsername(authenticationRequest.getUsername());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
-       // final String userId = 
-        return ResponseEntity.ok(new JwtResponse(token));
-
-//        {
-//            userId: 123,
-//            token: '123123123'
-//        }
+       final String username = userDetails.getUsername();
+        final long user_id = userDetailsService.getUserIdByUsername(authenticationRequest.getUsername());
+        return ResponseEntity.ok(new JwtResponse(token, user_id, username));
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -56,4 +52,5 @@ public class JwtAuthenticationController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
+
 }

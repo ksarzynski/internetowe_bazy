@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: undefined
+  apiUrl: undefined,
+  userID: undefined,
+  userUsername: "niezalogowano"
 };
 
 /*

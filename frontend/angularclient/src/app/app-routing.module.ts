@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {Router, RouterModule, Routes} from '@angular/router';
 import {LoginFormComponent} from "./login-form/login-form.component";
 import {UserFormComponent} from "./user-form/user-form.component";
-import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 import {MainpageComponent} from "./mainpage/mainpage.component";
 import {CinemaListComponent} from "./list/cinema-list/cinema-list.component";
 import {HallListComponent} from "./list/hall-list/hall-list.component";
@@ -17,7 +17,8 @@ const routes: Routes = [
   {path: 'cinemas', component: CinemaListComponent},
   {path: 'halls', component: HallListComponent},
   {path: 'seances', component: SeancesListComponent},
-  {path: 'movies', component: MoviesListComponent}
+  {path: 'movies', component: MoviesListComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 @NgModule({
   imports: [
