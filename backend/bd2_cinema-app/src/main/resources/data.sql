@@ -29,7 +29,7 @@ INSERT INTO cinema_db.directors VALUES (1, 'great director', 'Alfred', 'Hitchcoc
 INSERT INTO cinema_db.actors VALUES (1, 'Guy from pirates of carribean', 'Johnny', 'Depp'),
     (2, 'aaaaa', 'Leonardo', 'DiCaprio'), (3, 'Hari Pota', 'Daniel', 'Radcliff'), (4, 'Space oddysey', 'Keir', 'Dullea');
 
-INSERT INTO cinema_db.movies VALUES (1, 20.15, 'sci-fi', 'the most well known movie from kubrick', 'Stanley Kubrick',
+INSERT INTO cinema_db.movies VALUES (1, 20.15, 'sci-fi', 'the most well known movie from kubrick',
                                     200, '2001: Odyseja kosmiczna', 13, 8.8, 3);
 
 INSERT INTO cinema_db.movie_actor VALUES (1, 4);
@@ -39,6 +39,7 @@ INSERT INTO cinema_db.users VALUES (99, 8, 'xd@ex.com', 1, 1, 'hashedpass', 'rev
 INSERT INTO cinema_db.reviews VALUES (1, 'I really enjoyed this movie', 9, 99, 1);
 
 INSERT INTO cinema_db.seances VALUES(1, '2021-12-20 14:30:00', 100, 40.00, '2021-12-20 12:30:00', 1, 1),
-                                     (2, '2021-12-20 19:30:00', 100, 40.00, '2021-12-20 17:30:00', 1, 1);
+                                     (2, '2021-12-20 19:30:00', 100, 40.00, '2021-12-20 17:30:00', 1, 1),
+                                     (3, '2021-12-20 19:30:00', 100, 40.00, '2021-12-20 17:30:00', 1, 3);
 
 

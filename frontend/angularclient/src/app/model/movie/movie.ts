@@ -19,4 +19,4 @@ export class movie{
     this.rating = 0;
     this.basePrice = 0;
   }
-}
+} 

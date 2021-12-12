@@ -17,6 +17,7 @@ import {ModalModule} from "./modal/_modal";
 import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { NavbarComponent } from './navbar/navbar.component';
+import { ReservationPageComponent } from './reservation-page/reservation-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     SeancesListComponent,
     MoviesListComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ReservationPageComponent
   ],
   imports: [
     BrowserModule,
