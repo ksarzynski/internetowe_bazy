@@ -15,7 +15,6 @@ import java.util.List;
 @ToString
 @Table(name = "DIRECTORS")
 public class DirectorEntity {
-
     @Id
     @GeneratedValue
     private int director_id;
@@ -23,6 +22,6 @@ public class DirectorEntity {
     private String surname;
     private String description;
     @OneToMany(targetEntity = MovieEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "director_seance_foreign_key", referencedColumnName = "director_id")
+    @JoinColumn(name = "director_movie_foreign_key", referencedColumnName = "director_id")
     private List<MovieEntity> directedMovies;
 }

@@ -4,4 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import pl.edu.pwr.bd2_cinema_app.model.MovieEntity;
 
 public interface MovieRepository extends CrudRepository<MovieEntity, Integer> {
+    boolean existsByName(String name);
 }

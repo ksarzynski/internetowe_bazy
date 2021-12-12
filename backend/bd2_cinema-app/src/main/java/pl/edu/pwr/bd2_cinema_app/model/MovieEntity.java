@@ -15,14 +15,12 @@ import java.util.List;
 @ToString
 @Table(name = "MOVIES")
 public class MovieEntity {
-
     @Id
     @GeneratedValue
     private int movie_id;
     private String name;
     private String category;
     private Integer duration;
-    private String director;
     private String description;
     private Integer pg;
     private Double rating;
