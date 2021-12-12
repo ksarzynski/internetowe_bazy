@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.current_user.saveData("niezalogowano");
     console.log("dziala");
+    console.log(localStorage.getItem("token"));
     this.authentication_service.clearCache();
     environment.userID = null;
     environment.userUsername = "niezalogowano";

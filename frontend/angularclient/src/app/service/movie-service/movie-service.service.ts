@@ -10,7 +10,7 @@ import {AuthInterceptor} from "../authentication/authInterceptor";
 export class MovieServiceService {
 
   private url: string;
-  constructor(private http: HttpClient, private interceptor: AuthInterceptor) {
+  constructor(private http: HttpClient) {
     this.url = 'https://localhost:443/movies/all_movies'
   }
 
