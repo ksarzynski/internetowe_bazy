@@ -27,10 +27,8 @@ export class AuthenticationService {
   public clearCache() {
     console.log('Done');
     this.token = '';
-    this.loggedInUserEmail = '';
-    localStorage.removeItem('user');
     localStorage.removeItem('token');
-    localStorage.removeItem('users');
+
   }
 
   public saveToken(token: string): void {

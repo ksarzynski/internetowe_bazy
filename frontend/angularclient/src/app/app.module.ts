@@ -39,12 +39,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule,
     ReactiveFormsModule,
     ModalModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   exports: [
     MatToolbarModule
   ],
-  providers: [UserService],
+  providers: [UserService,NavbarComponent],
   bootstrap: [AppComponent]
 })
 
