@@ -7,7 +7,7 @@ DELETE FROM cinema_db.reviews;
 DELETE FROM cinema_db.movies;
 DELETE FROM cinema_db.directors;
 DELETE FROM cinema_db.actors;
-DELETE FROM cinema_db.users;
+DELETE FROM cinema_db.users WHERE user_id=99;
 
 
 INSERT INTO cinema_db.cinema_branches VALUES (1, 'add1', 'wro', 'branch1'), (2, 'add2', 'wro', 'branch2'),
