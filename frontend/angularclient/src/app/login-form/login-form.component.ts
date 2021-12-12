@@ -9,8 +9,9 @@ import {HeadersPrefix} from '../enum/headers.enum';
 //import {NotificationsService} from '../service/notifications/notifications.service';
 import {Subscription} from 'rxjs';
 import {error} from "@angular/compiler/src/util";
+import {NavbarComponent} from "../navbar/navbar.component";
 import {environment} from "../../environments/environment";
-
+import {CurrentUserService} from "../service/current-user.service";
 @Component({
   selector: 'app-register-form',
   templateUrl: './login-form.component.html',
@@ -19,7 +20,7 @@ import {environment} from "../../environments/environment";
 export class LoginFormComponent implements OnInit {
   private subscriptions: Subscription[] = [];
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private authenticationService: AuthenticationService, private router: Router, private navbar : NavbarComponent, private current_user: CurrentUserService) {
   }
 
   @Output() loginEvent = new EventEmitter();
@@ -34,13 +35,11 @@ export class LoginFormComponent implements OnInit {
           const token = response.body["token"];
           const user_id = response.body["userId"];
           const username = response.body["username"];
+          this.current_user.saveData(username);
+          this.authenticationService.saveToken(token);
           environment.userUsername = username;
           environment.userID = user_id;
-          console.log(username);
             this.authenticationService.saveToken(token || '{}');
-            console.log(response.body["token"]);
-            console.log(environment.userID);
-
             this.router.navigateByUrl("");
             window.confirm("Zalogowano użytkownika "+ username);
         },(error) => {

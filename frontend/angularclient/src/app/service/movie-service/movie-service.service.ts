@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHandler, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {movie} from "../../model/movie/movie";
+import {AuthInterceptor} from "../authentication/authInterceptor";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {movie} from "../../model/movie/movie";
 export class MovieServiceService {
 
   private url: string;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private interceptor: AuthInterceptor) {
     this.url = 'https://localhost:443/movies/all_movies'
   }
 
