@@ -1,5 +1,6 @@
 package pl.edu.pwr.bd2_cinema_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,12 +26,15 @@ public class MovieEntity {
     private Integer pg;
     private Double rating;
     private Double basePrice;
+    @JsonIgnore
     @OneToMany(targetEntity = SeanceEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_seance_foreign_key", referencedColumnName = "movie_id")
     private List<SeanceEntity> seances;
+    @JsonIgnore
     @OneToMany(targetEntity = ReviewEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_review_foreign_key", referencedColumnName = "movie_id")
     private List<ReviewEntity> reviews;
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name= "movie_actor",

@@ -11,7 +11,7 @@ export class MovieServiceService {
 
   private url: string;
   constructor(private http: HttpClient) {
-    this.url = 'https://localhost:443/movies/all_movies'
+    this.url = 'https://localhost:443/movies/getMovies'
   }
 
   listMovies(): Observable<movie[]> {

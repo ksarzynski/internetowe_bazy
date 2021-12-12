@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
@@ -17,6 +17,7 @@ import {ModalModule} from "./modal/_modal";
 import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { NavbarComponent } from './navbar/navbar.component';
+import {AuthInterceptor} from "./service/authentication/authInterceptor";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   exports: [
     MatToolbarModule
   ],
+  // {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
   providers: [UserService,NavbarComponent],
   bootstrap: [AppComponent]
 })

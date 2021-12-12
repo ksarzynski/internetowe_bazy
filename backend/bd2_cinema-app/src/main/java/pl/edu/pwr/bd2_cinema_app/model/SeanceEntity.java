@@ -1,5 +1,6 @@
 package pl.edu.pwr.bd2_cinema_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,9 +26,11 @@ public class SeanceEntity {
     private Date endDate;
     private Integer noAvailableSeats;
     private Double price;
+    @JsonIgnore
     @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seance_id")
     private List<ReservationEntity> reservations;
+    @JsonIgnore
     @OneToMany(targetEntity = TicketEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "seance_ticket_foreign_key", referencedColumnName = "seance_id")
     private List<TicketEntity> tickets;
