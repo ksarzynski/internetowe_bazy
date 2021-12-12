@@ -15,7 +15,6 @@ import java.util.List;
 @ToString
 @Table(name = "ACTORS")
 public class ActorEntity {
-
     @Id
     @GeneratedValue
     private int actor_id;
