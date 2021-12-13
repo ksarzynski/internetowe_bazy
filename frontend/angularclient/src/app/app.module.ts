@@ -18,6 +18,8 @@ import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReservationPageComponent } from './reservation-page/reservation-page.component';
+import { MatTableModule } from "@angular/material/table";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ReservationPageComponent } from './reservation-page/reservation-page.co
     ReactiveFormsModule,
     ModalModule,
     MatToolbarModule,
+    MatTableModule,
+    MatGridListModule
   ],
   exports: [
     MatToolbarModule

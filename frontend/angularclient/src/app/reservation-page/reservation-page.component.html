@@ -1,0 +1,11 @@
+<p>RESERVATION PAGE</p>
+<div>
+    <mat-grid-list cols={{col_count}} *ngFor="let row of rows" rowHeight="3rem" style="margin-left:2rem; width: 20rem;">
+        <div *ngFor="let col of cols">
+            <mat-grid-tile><button>
+                {{row}}:{{col}}
+            </button>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

@@ -54,8 +54,9 @@ export class CinemaListComponent implements OnInit {
   }
 
   reservation(id: number){
-    console.log("reservation called: " + id);
-    this.router.navigate(['/reservation/'+id], {relativeTo: this._activatedRoute});
+    console.log("redirecting to reservation page with param(id): ", id);
+    //this.modalService.close('seances');
+    this.router.navigate(['/reservation', id]);
   }
 }
 

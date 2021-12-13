@@ -19,7 +19,7 @@ public class CinemaHallEntity {
 
     @Id
     @GeneratedValue
-    private int cinema_hall_id;
+    private Integer cinema_hall_id;
     private String name;
     private Integer size;
     private boolean is3d;
@@ -29,6 +29,7 @@ public class CinemaHallEntity {
     private List<SeanceEntity> seances;
 
     @OneToMany(targetEntity = SeatEntity.class, cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "cinema_hall_seat_foreign_key", referencedColumnName = "cinema_hall_id")
     private List<SeatEntity> seats;
 }
