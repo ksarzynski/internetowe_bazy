@@ -1,5 +1,6 @@
 package pl.edu.pwr.bd2_cinema_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,9 @@ public class SeatEntity {
     private boolean isPremium;
     private float seatFee;
     @ManyToMany(mappedBy = "reservationSeats")
+    @JsonIgnore
     private List<ReservationEntity> reservationsThatIncludeThisSeat;
     @ManyToMany(mappedBy = "ticketSeats")
+    @JsonIgnore
     private List<TicketEntity> ticketsThatIncludeThisSeat;
 }

@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'seances', component: SeancesListComponent},
   {path: 'movies', component: MoviesListComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'reservation/:seanceId', component: ReservationPageComponent}
+  {path: 'reservation', component: ReservationPageComponent}
 ];
 @NgModule({
   imports: [

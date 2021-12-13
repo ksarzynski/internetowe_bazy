@@ -55,7 +55,7 @@ export class CinemaListComponent implements OnInit {
 
   reservation(id: number){
     console.log("reservation called: " + id);
-    this.router.navigate(['/reservation/'+id], {relativeTo: this._activatedRoute});
+    this.router.navigate(['reservation'], {queryParams: {seanceId: id}});
   }
 }
 
