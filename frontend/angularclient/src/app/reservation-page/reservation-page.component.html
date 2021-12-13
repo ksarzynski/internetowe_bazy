@@ -1,0 +1,9 @@
+<div>
+    <p>{{hallId}}</p>
+<mat-grid-list cols="8" rowHeight="2rem" *ngFor="let i of rows" style="width: 60%; margin-left: 20px;">
+    <mat-grid-tile *ngFor="let j of cols">
+        <button style="color:greenyellow" *ngIf="seatAvailable; else elseBlock">{{i}}:{{j}}</button>
+        <ng-template #elseBlock><button style="color:red">{{i}}:{{j}}</button></ng-template>
+    </mat-grid-tile>
+</mat-grid-list>
+</div>
