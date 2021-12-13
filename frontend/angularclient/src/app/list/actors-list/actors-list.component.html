@@ -1,0 +1,29 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">imie</th>
+        <th scope="col">nazwisko</th>
+        <th scope="col">dodatkowe informacje</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let actor of actors">
+        <td>{{ actor.firstname }}</td>
+        <td>{{ actor.surname}}</td>
+        <td><button title="dowiedz się więcej" (click)="openModal('custom-modal-1')">informacje</button></td>
+        <div>
+          <jw-modal id="custom-modal-1">
+            <h1>Informacje o filmie</h1>
+            <label>{{actor.description}}</label>
+            <form>
+            </form>
+            <button (click)="closeModal('custom-modal-1');">Zamknij</button>
+          </jw-modal>
+        </div>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -17,7 +17,8 @@ import {ModalModule} from "./modal/_modal";
 import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { NavbarComponent } from './navbar/navbar.component';
-import {AuthInterceptor} from "./service/authentication/authInterceptor";
+import { DirectorsListComponent } from './list/directors-list/directors-list.component';
+import { ActorsListComponent } from './list/actors-list/actors-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import {AuthInterceptor} from "./service/authentication/authInterceptor";
     SeancesListComponent,
     MoviesListComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    DirectorsListComponent,
+    ActorsListComponent
   ],
   imports: [
     BrowserModule,
