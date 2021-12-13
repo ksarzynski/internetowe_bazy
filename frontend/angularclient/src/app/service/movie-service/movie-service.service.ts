@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHandler, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {movie} from "../../model/movie/movie";
-import {AuthInterceptor} from "../authentication/authInterceptor";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +14,7 @@ export class MovieServiceService {
   }
 
   listMovies(): Observable<movie[]> {
+    console.log(localStorage.getItem('token'));
     return this.http.get<movie[]>(this.url)
   }
 }
