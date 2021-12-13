@@ -18,7 +18,7 @@ public class CinemaBranchEntity {
 
     @Id
     @GeneratedValue
-    private Integer cinema_branch_id;
+    private int cinema_branch_id;
     private String name;
     // address
     private String city;

@@ -20,7 +20,7 @@ public class SeanceEntity {
 
     @Id
     @GeneratedValue
-    private Integer seance_id;
+    private int seance_id;
     // We assume that its proper class to store date and time. It may be changed in the future
     private Date startDate;
     private Date endDate;
