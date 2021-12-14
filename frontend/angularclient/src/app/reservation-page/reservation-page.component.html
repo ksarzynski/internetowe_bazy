@@ -2,8 +2,14 @@
     <p>{{hallId}}</p>
 <mat-grid-list cols="8" rowHeight="2rem" *ngFor="let i of rows" style="width: 60%; margin-left: 20px;">
     <mat-grid-tile *ngFor="let j of cols">
-        <button style="color:red" *ngIf="isSeatTaken(i,j); else elseBlock">{{i}}:{{j}}</button>
-        <ng-template #elseBlock><button style="color:greenyellow">{{i}}:{{j}}</button></ng-template>
+        <button [ngClass]="isSeatTaken(i,j) ? 'SeatTaken' : isSeatClicked(i,j) ? 
+        'SeatClicked' : 'SeatAvailable' " (click)="addToReservation(i,j)">
+            {{i}}:{{j}}
+        </button>
+
     </mat-grid-tile>
 </mat-grid-list>
+
+<button (click)="makeReservation()">Make reservation with selected seats</button>
+
 </div>

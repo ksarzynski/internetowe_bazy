@@ -1,14 +1,14 @@
 import { hall } from "../hall/hall";
 
 export class seat {
-    seatId: number;
+    seat_id: number;
     isPremium: boolean;
     myColumnNumber: number;
     myRowNumber: number;
     seatFee: number;
     
     constructor() {
-      this.seatId = 0;
+      this.seat_id = 0;
       this.isPremium = false;
       this.myColumnNumber = 0;
       this.myRowNumber = 0;

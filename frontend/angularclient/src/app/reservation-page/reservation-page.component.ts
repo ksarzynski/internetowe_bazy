@@ -14,8 +14,10 @@ export class ReservationPageComponent implements OnInit {
   seatsTaken: seat[] = [];
   loaded = false;
   seanceId = 0;
-  cols: number[] = Array.from(Array(8).keys());
-  rows: number[] = Array.from(Array(10).keys());
+  cols: number[] = Array.from({length: 8}, (_, i) => i + 1);
+  rows: number[] = Array.from({length: 10}, (_, i) => i + 1);
+  seatsToReserve : number[] = [];
+
   constructor(private reservationService: ReservationService, private route: ActivatedRoute) {
     
    }
@@ -34,13 +36,44 @@ export class ReservationPageComponent implements OnInit {
         this.loaded = true;
         console.log(this.seatsTaken);
       });
+      this.reservationService.getSeanceHall(this.seanceId).subscribe(data =>{
+        this.hallId = data.cinema_hall_id;
+      })
       
   }
 
   isSeatTaken(i:number, j:number){
     let foundSeats: seat[];
-    foundSeats = this.seatsTaken.filter(s => s.myColumnNumber == j+1 && s.myRowNumber == i+1);
+    foundSeats = this.seatsTaken.filter(s => s.myColumnNumber == j && s.myRowNumber == i);
     return foundSeats.length > 0;
   }
 
+  addToReservation(i:number, j:number){
+    let foundSeat = this.seats.find(s => {
+      return s.myColumnNumber == j && s.myRowNumber == i;
+    });
+    console.log(foundSeat);
+    if(foundSeat == undefined || this.seatsTaken.includes(foundSeat))
+      return;
+    if(!this.seatsToReserve.includes(foundSeat.seat_id))
+      this.seatsToReserve.push(foundSeat.seat_id);
+    else
+      this.seatsToReserve = this.seatsToReserve.filter(id => id !== foundSeat?.seat_id);
+    console.log("current reservation: " + this.seatsToReserve);
+  }
+
+  makeReservation(){
+    //send post
+    //redirect 
+  }
+
+
+  isSeatClicked(i:number, j:number){
+    let foundSeat = this.seats.find(s => {
+      return s.myColumnNumber == j && s.myRowNumber == i;
+    });
+    if(foundSeat != undefined)
+      return this.seatsToReserve.includes(foundSeat.seat_id);
+    return false;
+  }
 }
