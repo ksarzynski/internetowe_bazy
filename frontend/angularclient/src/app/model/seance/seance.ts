@@ -3,7 +3,7 @@ import { hall } from '../hall/hall';
 
 export class seance {
   name: string;
-  seanceId: number;
+  seance_id: number;
   startDate: Date;
   startDateString : string;
   endDate: Date;
@@ -17,7 +17,7 @@ export class seance {
 
   constructor() {
     this.name = '';
-    this.seanceId = 0;
+    this.seance_id = 0;
     this.startDate = new Date();
     this.startDateString = '';
     this.endDate = new Date();
