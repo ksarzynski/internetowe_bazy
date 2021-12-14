@@ -24,4 +24,5 @@ public class DirectorEntity {
     @OneToMany(targetEntity = MovieEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "director_movie_foreign_key", referencedColumnName = "director_id")
     private List<MovieEntity> directedMovies;
+    private String imageUrl;
 }

@@ -42,4 +42,5 @@ public class MovieEntity {
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
     private List<ActorEntity> actorsWhoPlayedInThisMovie;
+    private String imageUrl;
 }

@@ -25,4 +25,5 @@ public class ActorEntity {
     @JsonIgnore
     @ManyToMany(mappedBy = "actorsWhoPlayedInThisMovie")
     private List<MovieEntity> moviesInWhichTheActorPlayed;
+    private String imageUrl;
 }

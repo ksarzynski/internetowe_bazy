@@ -15,4 +15,5 @@ public class ActorDTO {
     private String surname;
     private String description;
     private List<Integer> moviesInWhichTheActorPlayed;
+    private String imageUrl;
 }

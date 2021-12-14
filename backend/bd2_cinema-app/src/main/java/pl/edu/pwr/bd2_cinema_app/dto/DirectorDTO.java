@@ -15,4 +15,5 @@ public class DirectorDTO {
     private String surname;
     private String description;
     private List<Integer> directedMovies;
+    private String imageUrl;
 }

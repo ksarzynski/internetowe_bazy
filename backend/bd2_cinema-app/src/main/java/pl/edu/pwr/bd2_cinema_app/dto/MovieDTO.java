@@ -18,4 +18,5 @@ public class MovieDTO {
     private Integer pg;
     private Double basePrice;
     private List<Integer> actorsWhoPlayedInThisMovie;
+    private String imageUrl;
 }
