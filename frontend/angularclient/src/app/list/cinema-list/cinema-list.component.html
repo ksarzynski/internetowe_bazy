@@ -12,14 +12,50 @@
       </thead>
       <tbody>
       <tr *ngFor="let cinema of cinemas">
-        <td>{{ cinema.id }}</td>
+        <td>{{ cinema.cinema_branch_id }}</td>
         <td>{{ cinema.name}}</td>
         <td>{{ cinema.city }}</td>
         <td>{{ cinema.address}}</td>
-        <td><button title="sprawdź sale" (click)="goToSeances(cinema.id)">sprawdź seanse
+        <td><button title="sprawdź sale" (click)="goToSeances(cinema.cinema_branch_id)">sprawdź seanse
         </button>
         </td>
       </tr>
+      <div>
+        <jw-modal id="seances">
+          <h1>Informacje o seansach</h1>
+          <label>label</label>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">start</th>
+              <th scope="col">end</th>
+              <th scope="col">price</th>
+              <th scope="col">seats</th>
+              <th scope="col">movie</th>
+              <th scope="col">cinema hall</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let seance of seances">
+              <td>{{ seance.seance_id }}</td>
+              <td>{{ seance.startDate }}</td>
+              <td>{{ seance.endDate }}</td>
+              <td>{{ seance.price }}</td>
+              <td>{{ seance.noAvailableSeats }}</td>
+              <td>{{ seance.movie.name }}</td>
+              <td>{{ seance.cinemaHall.name }}</td>
+              <td>
+                <button title="Reservation" (click)="reservation(seance.seance_id)">
+                  zarezerwuj miejsce
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <button (click)="closeModal('seances');">Zamknij</button>
+        </jw-modal>
+      </div>
       </tbody>
     </table>
   </div>

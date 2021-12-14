@@ -17,6 +17,9 @@ import {ModalModule} from "./modal/_modal";
 import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { NavbarComponent } from './navbar/navbar.component';
+import { ReservationPageComponent } from './reservation-page/reservation-page.component';
+import { ReservationService } from './service/reservation/reservation.service';
+import { MatGridListModule } from '@angular/material/grid-list';
 import {HttpConfigInterceptorService} from "./interceptor/http-config-interceptor.service";
 
 @NgModule({
@@ -31,7 +34,8 @@ import {HttpConfigInterceptorService} from "./interceptor/http-config-intercepto
     SeancesListComponent,
     MoviesListComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ReservationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,13 +45,12 @@ import {HttpConfigInterceptorService} from "./interceptor/http-config-intercepto
     ReactiveFormsModule,
     ModalModule,
     MatToolbarModule,
+    MatGridListModule,
   ],
   exports: [
     MatToolbarModule
   ],
-  providers: [UserService,NavbarComponent,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptorService, multi: true },
-  ],
+  providers: [UserService,NavbarComponent,ReservationService, { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptorService, multi: true }, ], 
   bootstrap: [AppComponent]
 })
 
