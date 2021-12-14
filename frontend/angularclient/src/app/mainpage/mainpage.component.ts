@@ -6,6 +6,7 @@ import {SeanceServiceService} from "../service/seance-service/seance-service.ser
 import {movie} from "../model/movie/movie";
 import {getPrettyData} from "../utils/DateUtils";
 import {MovieServiceService} from "../service/movie-service/movie-service.service";
+import { AuthenticationService} from "../service/authentication/authentication.service";
 
 @Component({
   selector: 'app-mainpage',

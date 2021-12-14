@@ -1,5 +1,8 @@
 -- noinspection SqlDialectInspectionForFile
 
+DELETE FROM cinema_db.reservation_seat;
+DELETE FROM cinema_db.reservations;
+
 DELETE FROM cinema_db.seances;
 DELETE FROM cinema_db.seats;
 DELETE FROM cinema_db.cinema_halls;
@@ -23,7 +26,7 @@ INSERT INTO cinema_db.cinema_halls VALUES (1, 1, 'hall_1_1', 120, 1), (2, 0, 'ha
 INSERT INTO cinema_db.seats VALUES (1, 1, 1, 1, 12.10, 1), (2, 1, 1, 1, 15.21, 1), (3, 1, 1, 1, 21.37, 1),
     (4, 1, 1, 1, 13.40, 1), (5, 1, 1, 1, 12.34, 1), (6, 1, 1, 1, 15.00, 1), (7, 1, 1, 1, 19.18, 1),
     (8, 1, 1, 1, 14.13, 2), (9, 1, 1, 1, 15.10, 2), (10, 1, 1, 1, 11.10, 2), (11, 1, 1, 1, 7.10, 3),
-    (12, 1, 1, 1, 21.21, 3), (13, 1, 1, 1, 20.20, 4), (14, 1, 1, 1, 9.9, 4);
+    (12, 1, 1, 2, 21.21, 3), (13, 1, 1, 3, 20.20, 4), (14, 1, 1, 1, 9.9, 4);
 
 INSERT INTO cinema_db.directors VALUES (1, 'great director', 'Alfred', 'http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSMHUuQ-vBCak8z5E9_mWMAzohLhvPRXH9HZth2yYZI6UMapKx3-Jm5DBGbTZE8', 'Hitchcock'),
                                        (2, 'awesome director', 'Quentin', 'https://www.rmfclassic.pl/scratch/classic2013/static-images/68/f7e51dbd95e7e8ac.jpg', 'Tarantino'),
@@ -47,3 +50,5 @@ INSERT INTO cinema_db.seances VALUES (1, '2021-12-20 14:30:00', 'https://fwcdn.p
                                      (2, '2021-12-20 19:30:00', 'https://fwcdn.pl/fpo/14/58/1458/7592150.3.jpg', 100, 40.00, '2021-12-20 17:30:00', 1, 1);
 
 
+INSERT IGNORE INTO cinema_db.reservations VALUES (1, '2021-12-20 14:30:00', 12.34, 99, 2), (2, '2021-12-20 14:30:00', 12.34, 99, 3);
+INSERT IGNORE INTO cinema_db.reservation_seat VALUES (1, 1), (1, 2), (2, 12), (2, 11);

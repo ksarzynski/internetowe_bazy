@@ -54,13 +54,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers(
                         "/authenticate",
                 "/register",
-                "/branches/cinemas",
+                "/branches/*",
+                "/branches/*/*",
                 "/movies/getMovies",
                 "/movies/getMovie",
                 "/movies/getMovieByName",
                 "/directors/getDirectors",
                 "/actors/getActors",
-                "/seances/getSeances")
+                "/seances/getSeances",
+                "/halls/*",
+                "/reservations/*",
+                "/movies/all_movies",
+                "/seances/*")
                 .permitAll().
                         anyRequest().authenticated().and().
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()

@@ -20,6 +20,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DirectorsListComponent } from './list/directors-list/directors-list.component';
 import { ActorsListComponent } from './list/actors-list/actors-list.component';
 import { MoviePageComponent } from './pages/movie-page/movie-page.component';
+import { ReservationPageComponent } from './reservation-page/reservation-page.component';
+import { ReservationService } from './service/reservation/reservation.service';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {HttpConfigInterceptorService} from "./interceptor/http-config-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { MoviePageComponent } from './pages/movie-page/movie-page.component';
     NavbarComponent,
     DirectorsListComponent,
     ActorsListComponent,
-    MoviePageComponent
+    MoviePageComponent,
+    NavbarComponent,
+    ReservationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -46,12 +52,12 @@ import { MoviePageComponent } from './pages/movie-page/movie-page.component';
     ReactiveFormsModule,
     ModalModule,
     MatToolbarModule,
+    MatGridListModule,
   ],
   exports: [
     MatToolbarModule
   ],
-  // {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
-  providers: [UserService,NavbarComponent],
+  providers: [UserService,NavbarComponent,ReservationService, { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptorService, multi: true }, ],
   bootstrap: [AppComponent]
 })
 

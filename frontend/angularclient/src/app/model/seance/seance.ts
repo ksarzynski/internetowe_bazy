@@ -1,3 +1,6 @@
+import { movie } from "../movie/movie";
+import { hall } from '../hall/hall';
+
 export class seance {
   name: string;
   seanceId: number;
@@ -7,6 +10,11 @@ export class seance {
   endDateString : string;
   nameFilm: string;
   imageUrl: string;
+  price: number;
+  noAvailableSeats: number;
+  movie: movie;
+  cinemaHall: hall
+
   constructor() {
     this.name = '';
     this.seanceId = 0;
@@ -26,6 +34,10 @@ export class seance {
       'GcwLw7XZdB31sRn8O+ziqYro8Vn4CwOV+k6a9Iz+PwRsKC7h+gMfMXhKu/OmuwM/MXhKq8yWnYG/uJw5Uxoy2jRGZTBZ/jboxuSM1guDtdNh' +
       'KazJjiDbNMe0AxzKUVnkO+jEJxBxNtJzWCTxlNLzSB8KehJ/H+mJGYAjaDjzj9SnHZRuXZiAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECXP1' +
       'XDHv7U4SNFAAAAAElFTkSuQmCC'
+    this.price = 0;
+    this.noAvailableSeats = 0;
+    this.movie = new movie();
+    this.cinemaHall = new hall();
   }
 }
 
