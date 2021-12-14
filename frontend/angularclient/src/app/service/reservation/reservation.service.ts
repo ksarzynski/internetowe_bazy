@@ -15,8 +15,9 @@ export class ReservationService {
 
   }
 
-  listSeats(seanceId: number){
-    return this.http.get<seat[]>(this.url, {params: {id: seanceId}});
+  listSeats(hallId: number){
+    console.log("getting seats for hall: " + hallId);
+    return this.http.get<seat[]>(this.url, {params: {id: hallId}});
   }
 
   listReservedSeats(seanceId: number){
@@ -25,5 +26,13 @@ export class ReservationService {
 
   getSeanceHall(seanceId: number){
     return this.http.get<hall>(this.url3, {params: {seanceId: seanceId}});  
+  }
+
+  makeReservation(userId: number, seatIds: number[], seanceId: number){
+    let reqBody = {seanceId: seanceId, userId: userId, seatIds: seatIds};
+    let jsonbody = JSON.stringify(reqBody);
+    console.log("sending post request with body: ");
+    console.log(jsonbody);
+    return this.http.post<number>("https://localhost:443/reservations/makeReservation", reqBody);
   }
 }

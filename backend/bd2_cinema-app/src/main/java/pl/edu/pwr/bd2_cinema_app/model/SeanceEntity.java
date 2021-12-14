@@ -36,7 +36,7 @@ public class SeanceEntity {
     private CinemaHallEntity cinemaHall;
 
 
-    @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seance_id")
     private List<ReservationEntity> reservations;
 

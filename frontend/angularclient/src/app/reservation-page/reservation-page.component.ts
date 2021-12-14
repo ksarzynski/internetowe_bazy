@@ -9,13 +9,16 @@ import { ReservationService } from '../service/reservation/reservation.service';
   styleUrls: ['./reservation-page.component.css']
 })
 export class ReservationPageComponent implements OnInit {
-  hallId: number = 2;
+  hallId: number = 0;
+  hallSize: number = 0;
   seats: seat[] = [];
   seatsTaken: seat[] = [];
-  loaded = false;
+  loaded = 0;
   seanceId = 0;
   cols: number[] = Array.from({length: 8}, (_, i) => i + 1);
   rows: number[] = Array.from({length: 10}, (_, i) => i + 1);
+  max_col = 8;
+  max_row = 0;
   seatsToReserve : number[] = [];
 
   constructor(private reservationService: ReservationService, private route: ActivatedRoute) {
@@ -23,22 +26,33 @@ export class ReservationPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
+      this.loaded = 0;
       this.route.queryParams.subscribe(params => {
         this.seanceId = params['seanceId'];
+        this.loaded += 1;
         console.log(this.seanceId);
       })
-      this.reservationService.listSeats(this.hallId).subscribe(data => {
-        this.seats = data;
-        console.log(this.seats);
-      });
+      this.reservationService.getSeanceHall(this.seanceId).subscribe(data =>{
+        this.loaded += 1;
+        this.hallId = data.cinema_hall_id;
+        this.hallSize = data.size;
+        this.max_row = this.hallSize / 8;
+        this.rows = Array.from({length: this.max_row}, (_, i) => i + 1);
+        
+        this.reservationService.listSeats(this.hallId).subscribe(data => {
+          this.seats = data;
+          this.loaded += 1;
+          console.log("seats:" + this.seats);
+        });
+      })
+      
       this.reservationService.listReservedSeats(this.seanceId).subscribe(data =>{
         this.seatsTaken = data;
-        this.loaded = true;
+        //this.loaded = true;
+        this.loaded += 1;
         console.log(this.seatsTaken);
       });
-      this.reservationService.getSeanceHall(this.seanceId).subscribe(data =>{
-        this.hallId = data.cinema_hall_id;
-      })
+      
       
   }
 
@@ -62,9 +76,17 @@ export class ReservationPageComponent implements OnInit {
     console.log("current reservation: " + this.seatsToReserve);
   }
 
+  isInList(i:number, j:number){
+    return i*8 + j <= this.hallSize;
+  }
+
   makeReservation(){
     //send post
-    //redirect 
+    //TODO: change 99 to actual user id, change 1 to actual seance id
+    this.reservationService.makeReservation(99, this.seatsToReserve, 1).subscribe(data =>{
+      console.log("response: " + data);
+    });
+    //TODO: redirect 
   }
 
 

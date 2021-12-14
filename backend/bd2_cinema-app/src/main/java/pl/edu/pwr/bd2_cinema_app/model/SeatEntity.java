@@ -24,7 +24,7 @@ public class SeatEntity {
     private String myColumnNumber;
     private boolean isPremium;
     private float seatFee;
-    @ManyToMany(mappedBy = "reservationSeats")
+    @ManyToMany(mappedBy = "reservationSeats", cascade = CascadeType.MERGE)
     @JsonIgnore
     private List<ReservationEntity> reservationsThatIncludeThisSeat;
     @ManyToMany(mappedBy = "ticketSeats")

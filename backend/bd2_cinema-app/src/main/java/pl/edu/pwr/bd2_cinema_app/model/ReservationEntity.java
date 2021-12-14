@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import pl.edu.pwr.bd2_cinema_app.utils.ReservationRequestBody;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -32,8 +33,9 @@ public class ReservationEntity {
     )
     private List<SeatEntity> reservationSeats;
 
-    @ManyToOne(targetEntity = SeanceEntity.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = SeanceEntity.class, cascade = CascadeType.MERGE)
     @JsonIgnore
     @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seance_id")
     private SeanceEntity reservationSeance;
+
 }

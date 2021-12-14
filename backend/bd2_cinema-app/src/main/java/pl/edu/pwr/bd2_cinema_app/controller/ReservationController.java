@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.bd2_cinema_app.model.ReservationEntity;
 import pl.edu.pwr.bd2_cinema_app.model.SeanceEntity;
 import pl.edu.pwr.bd2_cinema_app.model.SeatEntity;
+import pl.edu.pwr.bd2_cinema_app.model.UserEntity;
 import pl.edu.pwr.bd2_cinema_app.repository.ReservationRepository;
 import pl.edu.pwr.bd2_cinema_app.repository.SeanceRepository;
+import pl.edu.pwr.bd2_cinema_app.repository.SeatRepository;
+import pl.edu.pwr.bd2_cinema_app.repository.UserRepository;
+import pl.edu.pwr.bd2_cinema_app.utils.ReservationRequestBody;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/reservations")
@@ -21,10 +23,14 @@ public class ReservationController {
 
     private final ReservationRepository reservationRepository;
     private final SeanceRepository seanceRepository;
+    private final SeatRepository seatRepository;
+    private final UserRepository userRepository;
     @Autowired
-    ReservationController(ReservationRepository reservationRepository, SeanceRepository seanceRepository){
+    ReservationController(ReservationRepository reservationRepository, SeanceRepository seanceRepository, SeatRepository seatRepository, UserRepository userRepository){
         this.reservationRepository = reservationRepository;
         this.seanceRepository = seanceRepository;
+        this.seatRepository = seatRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/seatsForSeance")
@@ -39,5 +45,29 @@ public class ReservationController {
         }
         return new ResponseEntity<>(seats, HttpStatus.OK);
 
+    }
+
+    @PostMapping("/makeReservation")
+    public ResponseEntity<Integer> makeReservation(@RequestBody ReservationRequestBody body){
+        ReservationEntity reservation = new ReservationEntity();
+        //add reservation
+        reservation = this.reservationRepository.save(reservation);
+        //add relationships
+        SeanceEntity seance = this.seanceRepository.findById(body.seanceId).get();
+        seance.getReservations().add(reservation);
+        this.seanceRepository.save(seance);
+        UserEntity user = this.userRepository.findById(body.userId).get();
+        user.getReservations().add(reservation);
+        this.userRepository.save(user);
+
+        //reserve seats
+        reservation.setReservationSeats(new ArrayList<>());
+        for(int i : body.seatIds){
+            if(this.seatRepository.findById(i).isPresent()){
+                reservation.getReservationSeats().add(this.seatRepository.findById(i).get());
+                this.reservationRepository.save(reservation);
+            }
+        }
+      return new ResponseEntity<>(1, HttpStatus.OK);
     }
 }
