@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
@@ -20,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ReservationPageComponent } from './reservation-page/reservation-page.component';
 import { ReservationService } from './service/reservation/reservation.service';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {HttpConfigInterceptorService} from "./interceptor/http-config-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
   exports: [
     MatToolbarModule
   ],
-  providers: [UserService,NavbarComponent,ReservationService],
+  providers: [UserService,NavbarComponent,ReservationService, { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptorService, multi: true }, ], 
   bootstrap: [AppComponent]
 })
 
