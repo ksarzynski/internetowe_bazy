@@ -17,6 +17,9 @@ import {ModalModule} from "./modal/_modal";
 import { RegisterComponent } from './register/register.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { NavbarComponent } from './navbar/navbar.component';
+import { DirectorsListComponent } from './list/directors-list/directors-list.component';
+import { ActorsListComponent } from './list/actors-list/actors-list.component';
+import { MoviePageComponent } from './pages/movie-page/movie-page.component';
 import { ReservationPageComponent } from './reservation-page/reservation-page.component';
 import { ReservationService } from './service/reservation/reservation.service';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -35,6 +38,10 @@ import {HttpConfigInterceptorService} from "./interceptor/http-config-intercepto
     MoviesListComponent,
     RegisterComponent,
     NavbarComponent,
+    DirectorsListComponent,
+    ActorsListComponent,
+    MoviePageComponent,
+    NavbarComponent,
     ReservationPageComponent
   ],
   imports: [
@@ -50,7 +57,7 @@ import {HttpConfigInterceptorService} from "./interceptor/http-config-intercepto
   exports: [
     MatToolbarModule
   ],
-  providers: [UserService,NavbarComponent,ReservationService, { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptorService, multi: true }, ], 
+  providers: [UserService,NavbarComponent,ReservationService, { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptorService, multi: true }, ],
   bootstrap: [AppComponent]
 })
 

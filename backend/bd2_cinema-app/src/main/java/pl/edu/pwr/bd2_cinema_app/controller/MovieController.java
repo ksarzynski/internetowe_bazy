@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
-@CrossOrigin
+@CrossOrigin()
 public class MovieController {
 
     private final MovieRepository movieRepository;
@@ -30,6 +30,14 @@ public class MovieController {
     public ResponseEntity<MovieEntity> getMovie(@RequestParam int id){
         if(this.movieRepository.findById(id).isPresent())
             return new ResponseEntity<>(this.movieRepository.findById(id).get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/getMovieByName")
+    public ResponseEntity<MovieEntity> getMovieByName(@RequestParam String name){
+        if(this.movieRepository.findByName(name).isPresent())
+            return new ResponseEntity<>(this.movieRepository.findByName(name).get(), HttpStatus.OK);
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -58,7 +66,8 @@ public class MovieController {
                 movie.getBasePrice(),
                 new ArrayList<>(),
                 new ArrayList<>(),
-                this.getActorsWhoPlayedInThisMovie(movie)
+                this.getActorsWhoPlayedInThisMovie(movie),
+                movie.getImageUrl()
             ));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -26,21 +26,21 @@ public class MovieEntity {
     private Integer pg;
     private Double rating;
     private Double basePrice;
-
-    @OneToMany(targetEntity = SeanceEntity.class, cascade = CascadeType.ALL)
     @JsonIgnore
+    @OneToMany(targetEntity = SeanceEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_seance_foreign_key", referencedColumnName = "movie_id")
     private List<SeanceEntity> seances;
-    @OneToMany(targetEntity = ReviewEntity.class, cascade = CascadeType.ALL)
     @JsonIgnore
+    @OneToMany(targetEntity = ReviewEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_review_foreign_key", referencedColumnName = "movie_id")
     private List<ReviewEntity> reviews;
-    @ManyToMany
     @JsonIgnore
+    @ManyToMany
     @JoinTable(
             name= "movie_actor",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
     private List<ActorEntity> actorsWhoPlayedInThisMovie;
+    private String imageUrl;
 }

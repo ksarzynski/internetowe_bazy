@@ -38,7 +38,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let seance of seances">
-              <td>{{ seance.seance_id }}</td>
+              <td>{{ seance.seanceId }}</td>
               <td>{{ seance.startDate }}</td>
               <td>{{ seance.endDate }}</td>
               <td>{{ seance.price }}</td>
@@ -46,7 +46,7 @@
               <td>{{ seance.movie.name }}</td>
               <td>{{ seance.cinemaHall.name }}</td>
               <td>
-                <button title="Reservation" (click)="reservation(seance.seance_id)">
+                <button title="Reservation" (click)="reservation(seance.seanceId)">
                   zarezerwuj miejsce
                 </button>
               </td>

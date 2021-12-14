@@ -53,7 +53,8 @@ public class ActorController {
                 actor.getFirstname(),
                 actor.getSurname(),
                 actor.getDescription(),
-                this.getMoviesInWhichTheActorPlayed(actor)
+                this.getMoviesInWhichTheActorPlayed(actor),
+                actor.getImageUrl()
         );
         this.addActorToMovies(newActor);
         this.actorRepository.save(newActor);

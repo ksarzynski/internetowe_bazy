@@ -10,11 +10,26 @@ export class MovieServiceService {
 
   private url: string;
   constructor(private http: HttpClient) {
-    this.url = 'https://localhost:443/movies/all_movies'
+    this.url = 'https://localhost:443/movies/'
   }
 
   listMovies(): Observable<movie[]> {
-    console.log(localStorage.getItem('token'));
-    return this.http.get<movie[]>(this.url)
+    return this.http.get<movie[]>(this.url + 'getMovies')
+  }
+
+  getMovie(id: number) : Observable<movie> {
+    return this.http.get<movie>(this.url + 'getMovie', {
+      params: {
+        id: id
+      }
+    })
+  }
+
+  getMovieByName(name: string) : Observable<movie> {
+    return this.http.get<movie>(this.url + 'getMovieByName', {
+      params: {
+        name: name
+      }
+    })
   }
 }

@@ -53,7 +53,8 @@ public class DirectorController {
                 director.getFirstname(),
                 director.getSurname(),
                 director.getDescription(),
-                this.getDirectedMovies(director)
+                this.getDirectedMovies(director),
+                director.getImageUrl()
         ));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -26,21 +26,19 @@ public class SeanceEntity {
     private Date endDate;
     private Integer noAvailableSeats;
     private Double price;
-
     @ManyToOne(targetEntity = MovieEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_seance_foreign_key", referencedColumnName = "movie_id")
     private MovieEntity movie;
-
     @ManyToOne(targetEntity = CinemaHallEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cinema_hall_seance_foreign_key", referencedColumnName = "cinema_hall_id")
     private CinemaHallEntity cinemaHall;
-
-
+    @JsonIgnore
     @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seance_id")
     private List<ReservationEntity> reservations;
-
+    @JsonIgnore
     @OneToMany(targetEntity = TicketEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "seance_ticket_foreign_key", referencedColumnName = "seance_id")
     private List<TicketEntity> tickets;
+    private String imageUrl;
 }

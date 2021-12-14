@@ -3,25 +3,20 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
-        <th scope="col">tytuł</th>
-        <th scope="col">reżyser</th>
-        <th scope="col">gatunek</th>
-        <th scope="col">ocena</th>
+        <th scope="col">imie</th>
+        <th scope="col">nazwisko</th>
         <th scope="col">dodatkowe informacje</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let movie of movies">
-        <td>{{ movie.name}}</td>
-        <td>{{ movie.director}}</td>
-        <td>{{ movie.category}}</td>
-        <td>{{ movie.rating}}</td>
-        <td><button title="informacje" (click)="openModal('custom-modal-1')">informacje</button></td>
-
+      <tr *ngFor="let director of directors">
+        <td>{{ director.firstname }}</td>
+        <td>{{ director.surname}}</td>
+        <td><button title="dowiedz się więcej" (click)="openModal('custom-modal-1')">informacje</button></td>
         <div>
           <jw-modal id="custom-modal-1">
             <h1>Informacje o filmie</h1>
-            <label>{{movie.description}}</label>
+            <label>{{director.description}}</label>
             <form>
             </form>
             <button (click)="closeModal('custom-modal-1');">Zamknij</button>
@@ -32,5 +27,3 @@
     </table>
   </div>
 </div>
-
-

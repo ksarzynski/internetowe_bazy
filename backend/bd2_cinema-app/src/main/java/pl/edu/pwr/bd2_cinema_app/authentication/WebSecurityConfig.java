@@ -51,8 +51,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate","/register","/branches/*",
-                "/branches/*/*", "/halls/*", "/reservations/*", "/movies/all_movies", "/seances/*").permitAll().
+                .authorizeRequests().antMatchers(
+                        "/authenticate",
+                "/register",
+                "/branches/*",
+                "/branches/*/*",
+                "/movies/getMovies",
+                "/movies/getMovie",
+                "/movies/getMovieByName",
+                "/directors/getDirectors",
+                "/actors/getActors",
+                "/seances/getSeances",
+                "/halls/*",
+                "/reservations/*",
+                "/movies/all_movies",
+                "/seances/*")
+                .permitAll().
                         anyRequest().authenticated().and().
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

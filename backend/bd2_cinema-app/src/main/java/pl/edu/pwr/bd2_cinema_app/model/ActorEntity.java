@@ -1,5 +1,6 @@
 package pl.edu.pwr.bd2_cinema_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ public class ActorEntity {
     private String firstname;
     private String surname;
     private String description;
+    @JsonIgnore
     @ManyToMany(mappedBy = "actorsWhoPlayedInThisMovie")
     private List<MovieEntity> moviesInWhichTheActorPlayed;
+    private String imageUrl;
 }

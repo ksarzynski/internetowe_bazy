@@ -1,24 +1,14 @@
-export class movie{
-  movie_id : number;
-  name : string;
-  category : string;
-  duration : number;
-  director : string;
+export class actor{
+  director_id : number;
+  firstname : string;
+  surname : string;
   description : string;
-  pg : number;
-  rating : number;
-  basePrice: number;
-  imageUrl: string;
+  imageUrl : string;
   constructor() {
-    this.movie_id = 0;
-    this.name= '';
-    this.category= '';
-    this.duration= 0;
-    this.director = '';
+    this.director_id = 0;
+    this.firstname = '';
+    this.surname = '';
     this.description = '';
-    this.pg = 0;
-    this.rating = 0;
-    this.basePrice = 0;
     this.imageUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAQlBMVEX///+hoaGenp6a' +
       'mpr39/fHx8fOzs7j4+P8/Pyvr6/d3d3FxcX29va6urqYmJjs7OzU1NSlpaW1tbWtra3n5+e/v78TS0zBAAACkUlEQVR4nO3b63KCMBCGY' +
       'UwUUVEO6v3fagWVY4LYZMbZnff51xaZ5jON7CZNEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQb5tvI8qzX4/nH84XG5Upfj2ir2V2E5' +
@@ -31,4 +21,4 @@ export class movie{
       'KazJjiDbNMe0AxzKUVnkO+jEJxBxNtJzWCTxlNLzSB8KehJ/H+mJGYAjaDjzj9SnHZRuXZiAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECXP1' +
       'XDHv7U4SNFAAAAAElFTkSuQmCC'
   }
-} 
+}

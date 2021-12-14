@@ -14,10 +14,10 @@ import { seance } from 'src/app/model/seance/seance';
 export class CinemaListComponent implements OnInit {
   cinemas: cinema[] = []
   seances: seance[] = []
-  
-  constructor(private cinemaService: CinemaServiceService, private router: Router, 
+
+  constructor(private cinemaService: CinemaServiceService, private router: Router,
     private modalService: ModalService, private _activatedRoute : ActivatedRoute) {
-      
+
   }
 
   ngOnInit(): void {
@@ -36,7 +36,7 @@ export class CinemaListComponent implements OnInit {
   }
 
   goToHalls(id: string) {
-    
+
   }
 
   goToSeances(id: string) {
@@ -45,7 +45,7 @@ export class CinemaListComponent implements OnInit {
       this.seances = data;
       console.log(this.seances[1]);
     })
-    
+
     this.modalService.open('seances');
   }
 
