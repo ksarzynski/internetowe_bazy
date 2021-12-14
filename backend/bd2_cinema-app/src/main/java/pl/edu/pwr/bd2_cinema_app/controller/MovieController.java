@@ -34,6 +34,14 @@ public class MovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/getMovieByName")
+    public ResponseEntity<MovieEntity> getMovieByName(@RequestParam String name){
+        if(this.movieRepository.findByName(name).isPresent())
+            return new ResponseEntity<>(this.movieRepository.findByName(name).get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping("/getMovies")
     public ResponseEntity<Iterable<MovieEntity>> getMovies(){
         if(this.movieRepository.count() > 0)
@@ -58,7 +66,8 @@ public class MovieController {
                 movie.getBasePrice(),
                 new ArrayList<>(),
                 new ArrayList<>(),
-                this.getActorsWhoPlayedInThisMovie(movie)
+                this.getActorsWhoPlayedInThisMovie(movie),
+                movie.getImageUrl()
             ));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

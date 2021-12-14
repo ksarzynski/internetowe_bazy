@@ -56,8 +56,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/register",
                 "/branches/cinemas",
                 "/movies/getMovies",
+                "/movies/getMovie",
+                "/movies/getMovieByName",
                 "/directors/getDirectors",
-                "/actors/getActors").permitAll().
+                "/actors/getActors",
+                "/seances/getSeances")
+                .permitAll().
                         anyRequest().authenticated().and().
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

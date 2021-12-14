@@ -34,4 +34,5 @@ public class SeanceEntity {
     @OneToMany(targetEntity = TicketEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "seance_ticket_foreign_key", referencedColumnName = "seance_id")
     private List<TicketEntity> tickets;
+    private String imageUrl;
 }

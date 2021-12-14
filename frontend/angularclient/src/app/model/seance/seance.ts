@@ -1,11 +1,19 @@
 export class seance {
+  name: string;
   seanceId: number;
-  startDate: Date | undefined;
-  endDate: Date | undefined;
+  startDate: Date;
+  startDateString : string;
+  endDate: Date;
+  endDateString : string;
   nameFilm: string;
   imageUrl: string;
   constructor() {
+    this.name = '';
     this.seanceId = 0;
+    this.startDate = new Date();
+    this.startDateString = '';
+    this.endDate = new Date();
+    this.endDateString = '';
     this.nameFilm = '';
     this.imageUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAQlBMVEX///+hoaGenp6a' +
       'mpr39/fHx8fOzs7j4+P8/Pyvr6/d3d3FxcX29va6urqYmJjs7OzU1NSlpaW1tbWtra3n5+e/v78TS0zBAAACkUlEQVR4nO3b63KCMBCGY' +

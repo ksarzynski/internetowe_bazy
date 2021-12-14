@@ -19,6 +19,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { NavbarComponent } from './navbar/navbar.component';
 import { DirectorsListComponent } from './list/directors-list/directors-list.component';
 import { ActorsListComponent } from './list/actors-list/actors-list.component';
+import { MoviePageComponent } from './pages/movie-page/movie-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ActorsListComponent } from './list/actors-list/actors-list.component';
     RegisterComponent,
     NavbarComponent,
     DirectorsListComponent,
-    ActorsListComponent
+    ActorsListComponent,
+    MoviePageComponent
   ],
   imports: [
     BrowserModule,

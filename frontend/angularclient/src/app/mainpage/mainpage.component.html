@@ -1,1 +1,30 @@
-<p>mainpage works!</p>
+<div *ngFor="let seance of seances">
+  <div class="card" style="width: 30rem">
+    <img class="card-img-top" [src]="seance.imageUrl" alt="there should be an image here">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align: center">{{seance.name}}</h5>
+      <h6 class="card-text" style="text-align: center">start: {{seance.startDateString}}</h6>
+      <h6 class="card-text" style="text-align: center">koniec: {{seance.endDateString}}</h6>
+      <div>
+        <a href="#" class="btn btn-primary" style="margin-left: 7rem"
+           (click)="openModal('custom-modal-1', seance.nameFilm)">
+          dowiedz sie wiecej o filmie</a>
+      </div>
+      <div>
+        <a href="#" class="btn btn-primary" style="margin-top: 10px; margin-left: 10rem"
+           (click)="openModal('custom-modal-2', seance.nameFilm)">zarezerwuj</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngModel="let movie = modalMovie">
+    <jw-modal id="custom-modal-1">
+      <h1>Informacje o filmie</h1>
+      <img class="card-img-top" [src]="movie.imageUrl" alt="there should be an image here">
+      <label>{{movie.description}}</label>
+      <form>
+      </form>
+      <button (click)="closeModal('custom-modal-1');">Zamknij</button>
+    </jw-modal>
+  </div>
+</div>
