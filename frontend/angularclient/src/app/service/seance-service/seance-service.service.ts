@@ -24,7 +24,7 @@ export class SeanceServiceService {
     if(seances !== undefined){
       seances.forEach(seance => {
         if(seance !== undefined){
-          this.getSeanceMovie(seance.seanceId).then(
+          this.getSeanceMovie(seance.seance_id).then(
             value => {
               if(value !== undefined)
                 movies.push(value)

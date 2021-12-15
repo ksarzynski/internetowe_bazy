@@ -1,15 +1,25 @@
 <div *ngIf="loaded == 4">
-    <p>{{hallId}}</p>
-<mat-grid-list cols="8" rowHeight="2rem" *ngFor="let i of rows" style="width: 60%; margin-left: 20px;">
+<mat-grid-list cols="8" rowHeight="2rem" *ngFor="let i of rows" style="width: 800px; margin-left: 20px;">
     <mat-grid-tile *ngFor="let j of cols">
         <button *ngIf="isInList(i, j)" [ngClass]="isSeatTaken(i,j) ? 'SeatTaken' : isSeatClicked(i,j) ? 
-        'SeatClicked' : 'SeatAvailable' " (click)="addToReservation(i,j)">
+        'SeatClicked' : 'SeatAvailable' " (click)="addToReservation(i,j)" style="width: 6em;">
             {{i}}:{{j}}
         </button>
 
     </mat-grid-tile>
 </mat-grid-list>
+<div>
+    <button class="SeatTaken">Miejsce zajęte</button>
+    <button class="SeatAvailable">Miejsce wolne</button>
+    <button class="SeatClicked">Miejsce wybrane</button>
+</div>
+<br>
 
-<button (click)="makeReservation()">Make reservation with selected seats</button>
+<div *ngIf="user_logged; else loginButton">
+    <button (click)="makeReservation()">Make reservation with selected seats</button>
+</div>
+<ng-template #loginButton>
+    <button (click)="goToLogin()">Log in before making a reservation</button>
+</ng-template>
 
 </div>

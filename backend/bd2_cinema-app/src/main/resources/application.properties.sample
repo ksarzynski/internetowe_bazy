@@ -15,7 +15,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
 spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
 spring.jpa.show-sql=true
-
+spring.sql.init.separator=^;
 ########## security properties ##########
 jwt.secret=javainuse
 
