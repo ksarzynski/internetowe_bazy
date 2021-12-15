@@ -1,11 +1,11 @@
 .SeatTaken{
-    color: red;
+    background-color: red;
 }
 
 .SeatAvailable{
-    color: green;
+    background-color: green;
 }
 
 .SeatClicked{
-    color:yellow;
+    background-color:yellow;
 }

@@ -28,7 +28,8 @@ export class ReservationService {
     return this.http.get<hall>(this.url3, {params: {seanceId: seanceId}});  
   }
 
-  makeReservation(userId: number, seatIds: number[], seanceId: number){
+  //userId cant acutally be null, but idk how to do it properly while getting userId from env
+  makeReservation(userId: number | null, seatIds: number[], seanceId: number){
     let reqBody = {seanceId: seanceId, userId: userId, seatIds: seatIds};
     let jsonbody = JSON.stringify(reqBody);
     console.log("sending post request with body: ");

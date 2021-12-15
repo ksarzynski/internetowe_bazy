@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { seat } from '../model/seat/seat';
+import { User } from '../model/user';
+import { AuthenticationService } from '../service/authentication/authentication.service';
 import { ReservationService } from '../service/reservation/reservation.service';
 
 @Component({
@@ -19,18 +22,24 @@ export class ReservationPageComponent implements OnInit {
   rows: number[] = Array.from({length: 10}, (_, i) => i + 1);
   max_col = 8;
   max_row = 0;
+  user_id: number | null = 0 ;
   seatsToReserve : number[] = [];
-
-  constructor(private reservationService: ReservationService, private route: ActivatedRoute) {
+  user_logged: boolean = false;
+  constructor(private reservationService: ReservationService, private route: ActivatedRoute, 
+    private auth: AuthenticationService, private router: Router) {
     
    }
 
   ngOnInit(): void {
+      this.user_logged = environment.userID != null;
+      if(this.user_logged != null)
+        this.user_id = environment.userID;
+
       this.loaded = 0;
       this.route.queryParams.subscribe(params => {
         this.seanceId = params['seanceId'];
         this.loaded += 1;
-        console.log(this.seanceId);
+        console.log("seance id:" + this.seanceId);
       })
       this.reservationService.getSeanceHall(this.seanceId).subscribe(data =>{
         this.loaded += 1;
@@ -42,15 +51,14 @@ export class ReservationPageComponent implements OnInit {
         this.reservationService.listSeats(this.hallId).subscribe(data => {
           this.seats = data;
           this.loaded += 1;
-          console.log("seats:" + this.seats);
+          console.log("seats fetched:" + this.seats.length);
         });
       })
       
       this.reservationService.listReservedSeats(this.seanceId).subscribe(data =>{
         this.seatsTaken = data;
-        //this.loaded = true;
         this.loaded += 1;
-        console.log(this.seatsTaken);
+        console.log("seats reserved:" + this.seatsTaken.length);
       });
       
       
@@ -83,10 +91,10 @@ export class ReservationPageComponent implements OnInit {
   makeReservation(){
     //send post
     //TODO: change 99 to actual user id, change 1 to actual seance id
-    this.reservationService.makeReservation(99, this.seatsToReserve, 1).subscribe(data =>{
+    this.reservationService.makeReservation(this.user_id, this.seatsToReserve, this.seanceId).subscribe(data =>{
       console.log("response: " + data);
     });
-    //TODO: redirect 
+    this.router.navigate(['/']);
   }
 
 
@@ -97,5 +105,9 @@ export class ReservationPageComponent implements OnInit {
     if(foundSeat != undefined)
       return this.seatsToReserve.includes(foundSeat.seat_id);
     return false;
+  }
+
+  goToLogin(){
+    this.router.navigate(['login'])
   }
 }
