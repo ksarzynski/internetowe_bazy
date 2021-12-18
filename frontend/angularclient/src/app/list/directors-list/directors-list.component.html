@@ -12,11 +12,11 @@
       <tr *ngFor="let director of directors">
         <td>{{ director.firstname }}</td>
         <td>{{ director.surname}}</td>
-        <td><button title="dowiedz się więcej" (click)="openModal('custom-modal-1')">informacje</button></td>
+        <td><button title="dowiedz się więcej" (click)="openModal('custom-modal-1', director)">informacje</button></td>
         <div>
           <jw-modal id="custom-modal-1">
-            <h1>Informacje o filmie</h1>
-            <label>{{director.description}}</label>
+            <h1>Informacje o rezyserze {{modalDirector.firstname}} {{modalDirector.surname}} </h1>
+            <label>{{modalDirector.description}}</label>
             <form>
             </form>
             <button (click)="closeModal('custom-modal-1');">Zamknij</button>

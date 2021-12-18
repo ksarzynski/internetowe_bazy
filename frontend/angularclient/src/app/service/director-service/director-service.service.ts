@@ -16,4 +16,8 @@ export class DirectorServiceService {
   listDirectors(): Observable<director[]> {
     return this.http.get<director[]>(this.url + '/getDirectors')
   }
+
+  getDirector(): Observable<director> {
+    return this.http.get<director>(this.url + '/getDirector', {params: {name: 'aa', surname: 'bb'}});
+  }
 }

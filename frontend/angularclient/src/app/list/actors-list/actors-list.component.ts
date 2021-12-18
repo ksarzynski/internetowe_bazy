@@ -12,7 +12,7 @@ import {ActorServiceService} from "../../service/actor-service/actor-service.ser
 })
 export class ActorsListComponent implements OnInit {
   actors: actor[] = []
-
+  modalActor: actor = {} as actor;
   constructor(private actorService: ActorServiceService, private router: Router,
               private modalService: ModalService) {
   }
@@ -32,7 +32,8 @@ export class ActorsListComponent implements OnInit {
     this.modalService.close(id);
   }
 
-  openModal(id: string) {
+  openModal(id: string, actor: actor) {
+    this.modalActor = actor;
     this.modalService.open(id);
   }
 }

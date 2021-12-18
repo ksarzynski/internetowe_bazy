@@ -12,6 +12,8 @@ import {movie} from "../../model/movie/movie";
 })
 export class MoviesListComponent implements OnInit {
   movies: movie[] = []
+  modalMovie: movie = {} as movie
+
   constructor( private movieService: MovieServiceService, private router: Router, private modalService: ModalService){}
 
   @ViewChild('myModal') myModal: any;
@@ -30,7 +32,8 @@ export class MoviesListComponent implements OnInit {
     this.modalService.close(id);
   }
 
-  openModal(id: string) {
+  openModal(id: string, movie: movie) {
+    this.modalMovie = movie;
     this.modalService.open(id);
   }
 }

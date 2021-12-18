@@ -12,6 +12,7 @@ import {ModalService} from "../../modal/_modal";
 })
 export class DirectorsListComponent implements OnInit {
   directors: director[] = []
+  modalDirector: director = <director>{};
 
   constructor(private directorService: DirectorServiceService, private router: Router,
               private modalService: ModalService) {
@@ -32,7 +33,8 @@ export class DirectorsListComponent implements OnInit {
     this.modalService.close(id);
   }
 
-  openModal(id: string) {
+  openModal(id: string, dir: director) {
+    this.modalDirector = dir;
     this.modalService.open(id);
   }
 }

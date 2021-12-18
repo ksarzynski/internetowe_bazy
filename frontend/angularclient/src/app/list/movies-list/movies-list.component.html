@@ -16,12 +16,12 @@
         <td>{{ movie.director}}</td>
         <td>{{ movie.category}}</td>
         <td>{{ movie.rating}}</td>
-        <td><button title="informacje" (click)="openModal('custom-modal-1')">informacje</button></td>
+        <td><button title="informacje" (click)="openModal('custom-modal-1', movie)">informacje</button></td>
 
         <div>
           <jw-modal id="custom-modal-1">
-            <h1>Informacje o filmie</h1>
-            <label>{{movie.description}}</label>
+            <h1>Informacje o filmie {{modalMovie.name}}</h1>
+            <label>{{modalMovie.description}}</label>
             <form>
             </form>
             <button (click)="closeModal('custom-modal-1');">Zamknij</button>
