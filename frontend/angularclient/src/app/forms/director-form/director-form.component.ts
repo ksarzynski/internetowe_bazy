@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { director } from 'src/app/model/director/director';
+import { DirectorServiceService } from 'src/app/service/director-service/director-service.service';
 import { CustomValidators } from '../CustomValidators';
 
 @Component({
@@ -10,7 +11,7 @@ import { CustomValidators } from '../CustomValidators';
 })
 export class DirectorFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private directorService: DirectorServiceService) { }
 
   ngOnInit(): void {
   }
@@ -25,9 +26,7 @@ export class DirectorFormComponent implements OnInit {
   });
 
   onSubmit(){
-    console.log(this.directorForm.value)
-    console.log(this.dir);
-    //TODO: add dir to db
+    this.directorService.addDirector(this.dir).subscribe(data => console.log(data));
   }
 
 }

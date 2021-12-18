@@ -1,1 +1,29 @@
-<p>movie-form works!</p>
+<div>
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+        <label for="name">Nazwa: </label>
+        <input id="name" type="text" formControlName="name" [(ngModel)]="movie.name">
+      
+        <label for="category">Kategoria: </label>
+        <input id="category" type="text" formControlName="category" [(ngModel)]="movie.category">
+
+        <label for="description">Opis: </label>
+        <input id="description" type="text" formControlName="description" [(ngModel)]="movie.description">
+
+        <label for="pg">Pg: </label>
+        <input id="pg" type="text" formControlName="pg" [(ngModel)]="movie.pg">
+
+        <label for="duration">Czas trwania(min): </label>
+        <input id="duration" type="text" formControlName="duration" [(ngModel)]="movie.duration">
+
+        <label for="rating">Ocena: </label>
+        <input id="rating" type="text" formControlName="rating" [(ngModel)]="movie.rating">
+
+        <label for="basePrice">Cena bazowa: </label>
+        <input id="basePrice" type="text" formControlName="basePrice" [(ngModel)]="movie.basePrice">
+
+        <label for="imageUrl">Url zdjęcia: </label>
+        <input id="imageUrl" type="text" formControlName="imageUrl" [(ngModel)]="movie.imageUrl">
+        
+        <button type="submit" [disabled]="!movieForm.valid">Submit</button>
+    </form>
+</div>

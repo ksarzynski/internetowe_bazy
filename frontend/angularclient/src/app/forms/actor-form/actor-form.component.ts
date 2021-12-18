@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { actor } from 'src/app/model/actor/actor';
+import { ActorServiceService } from 'src/app/service/actor-service/actor-service.service';
 import { CustomValidators } from '../CustomValidators';
 
 @Component({
@@ -22,13 +23,14 @@ export class ActorFormComponent implements OnInit {
   });
 
   onSubmit(){
-    console.log(this.actorForm.value)
-    console.log(this.act);
+    this.actorService.addActor(this.act).subscribe(
+      data => console.log(data)
+    );
     //TODO: add actor to db
   }
 
 
-  constructor() { }
+  constructor(private actorService: ActorServiceService) { }
 
   ngOnInit(): void {
   }

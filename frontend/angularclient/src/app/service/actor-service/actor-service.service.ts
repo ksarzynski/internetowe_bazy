@@ -16,4 +16,8 @@ export class ActorServiceService {
   listActors(): Observable<actor[]> {
     return this.http.get<actor[]>(this.url + '/getActors')
   }
+
+  addActor(actor: actor){
+    return this.http.post<string>(this.url + '/addActor', actor);
+  }
 }

@@ -1,18 +1,18 @@
 <div>
-    <form [formGroup]="directorForm" (ngSubmit)="onSubmit()">
-        <label for="firstname">Imię: </label>
-        <input id="firstname" type="text" formControlName="firstname" [(ngModel)]="dir.firstname">
-      
-        <label for="surname">Nazwisko: </label>
-        <input id="surname" type="text" formControlName="surname" [(ngModel)]="dir.surname">
+<form [formGroup]="directorForm" (ngSubmit)="onSubmit()">
+    <label for="firstname">Imię: </label>
+    <input id="firstname" type="text" formControlName="firstname" [(ngModel)]="dir.firstname">
+    
+    <label for="surname">Nazwisko: </label>
+    <input id="surname" type="text" formControlName="surname" [(ngModel)]="dir.surname">
 
-        <label for="description">Opis: </label>
-        <input id="description" type="text" formControlName="description" [(ngModel)]="dir.description">
+    <label for="description">Opis: </label>
+    <input id="description" type="text" formControlName="description" [(ngModel)]="dir.description">
 
-        <label for="imageUrl">Url zdjęcia: </label>
-        <input id="imageUrl" type="text" formControlName="imageUrl" [(ngModel)]="dir.imageUrl">
+    <label for="imageUrl">Url zdjęcia: </label>
+    <input id="imageUrl" type="text" formControlName="imageUrl" [(ngModel)]="dir.imageUrl">
 
 
-        <button type="submit" [disabled]="!directorForm.valid">Submit</button>
-    </form>
+    <button type="submit" [disabled]="!directorForm.valid">Submit</button>
+</form>
 </div>

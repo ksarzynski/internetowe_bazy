@@ -14,6 +14,7 @@ import {MoviePageComponent} from "./pages/movie-page/movie-page.component";
 import { ReservationPageComponent } from './reservation-page/reservation-page.component';
 import { ActorFormComponent } from './forms/actor-form/actor-form.component';
 import { DirectorFormComponent } from './forms/director-form/director-form.component';
+import { MovieFormComponent } from './forms/movie-form/movie-form.component';
 
 const routes: Routes = [
   {path: "login", component: LoginFormComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'reservation', component: ReservationPageComponent},
   {path: 'addActor', component: ActorFormComponent},
   {path: 'addDirector', component: DirectorFormComponent},
+  {path: 'addMovie', component: MovieFormComponent},
 ];
 @NgModule({
   imports: [
