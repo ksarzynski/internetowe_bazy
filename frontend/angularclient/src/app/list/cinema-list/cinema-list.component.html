@@ -39,8 +39,8 @@
             <tbody>
             <tr *ngFor="let seance of seances">
               <td>{{ seance.seance_id }}</td>
-              <td>{{ seance.startDate }}</td>
-              <td>{{ seance.endDate }}</td>
+              <td>{{ seance.startDateString}}</td>
+              <td>{{ seance.endDateString }}</td>
               <td>{{ seance.price }}</td>
               <td>{{ seance.noAvailableSeats }}</td>
               <td>{{ seance.movie.name }}</td>

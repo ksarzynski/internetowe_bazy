@@ -5,6 +5,7 @@ import {CinemaServiceService} from "../../service/cinema-service/cinema-service.
 import {environment} from "../../../environments/environment";
 import { ModalService } from 'src/app/modal/_modal';
 import { seance } from 'src/app/model/seance/seance';
+import { getPrettyData } from 'src/app/utils/DateUtils';
 
 @Component({
   selector: 'app-cinema-list',
@@ -43,11 +44,17 @@ export class CinemaListComponent implements OnInit {
     console.log("fetching seances and opening modal");
     this.cinemaService.listSeances(id).subscribe(data => {
       this.seances = data;
+      data.forEach(seance => {
+        seance.startDateString = getPrettyData(seance.startDate)
+        seance.endDateString = getPrettyData(seance.endDate)
+      })
       console.log(this.seances[1]);
     })
 
     this.modalService.open('seances');
   }
+
+
 
   closeModal(id: string){
     this.modalService.close(id);
