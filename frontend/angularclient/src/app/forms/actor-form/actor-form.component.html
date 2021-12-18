@@ -1,0 +1,18 @@
+<div>
+    <form [formGroup]="actorForm" (ngSubmit)="onSubmit()">
+        <label for="firstname">Imię: </label>
+        <input id="firstname" type="text" formControlName="firstname" [(ngModel)]="act.firstname">
+      
+        <label for="surname">Nazwisko: </label>
+        <input id="surname" type="text" formControlName="surname" [(ngModel)]="act.surname">
+
+        <label for="description">Opis: </label>
+        <input id="description" type="text" formControlName="description" [(ngModel)]="act.description">
+
+        <label for="imageUrl">Url zdjęcia: </label>
+        <input id="imageUrl" type="text" formControlName="imageUrl" [(ngModel)]="act.imageUrl">
+
+
+        <button type="submit" [disabled]="!actorForm.valid">Submit</button>
+    </form>
+</div>
