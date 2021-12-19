@@ -48,13 +48,22 @@ public class DirectorController {
         if(this.checkIfDirectorAlreadyExists(director.getFirstname(), director.getSurname()))
             return new ResponseEntity<>("Director with given firstname and surname already exists.",
                     HttpStatus.BAD_REQUEST);
+        //TODO: handle urls properly
+        String url = director.getImageUrl();
+        if(url.length() > 250)
+            System.out.println("image url too long");
+
+        url = url.length() > 250 ? " " : url;
+
         this.directorRepository.save(new DirectorEntity(
-                director.getDirector_id(),
+                0,
                 director.getFirstname(),
                 director.getSurname(),
                 director.getDescription(),
-                this.getDirectedMovies(director),
-                director.getImageUrl()
+                new ArrayList<>(),
+                url
+                //this.getDirectedMovies(director),
+                //director.getImageUrl()
         ));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

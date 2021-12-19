@@ -5,9 +5,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserFormComponent } from './user-form/user-form.component';
+import { UserFormComponent } from './forms/user-form/user-form.component';
 import { UserService } from './service/user/user.service';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginFormComponent } from './forms/login-form/login-form.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { CinemaListComponent } from './list/cinema-list/cinema-list.component';
 import { HallListComponent } from './list/hall-list/hall-list.component';
@@ -29,7 +29,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SeanceFormComponent } from './forms/seance-form/seance-form.component';
+import { ActorFormComponent } from './forms/actor-form/actor-form.component';
+import { DirectorFormComponent } from './forms/director-form/director-form.component';
+import { MovieFormComponent } from './forms/movie-form/movie-form.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MoviePageComponent,
     NavbarComponent,
     ReservationPageComponent,
+    SeanceFormComponent,
+    ActorFormComponent,
+    DirectorFormComponent,
+    MovieFormComponent,
     AddUserFormComponent
   ],
   imports: [
