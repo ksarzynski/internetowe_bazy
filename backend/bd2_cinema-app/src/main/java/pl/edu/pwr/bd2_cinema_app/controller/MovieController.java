@@ -42,7 +42,7 @@ public class MovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/getMovies")
+    @GetMapping("/all_movies")
     public ResponseEntity<Iterable<MovieEntity>> getMovies(){
         if(this.movieRepository.count() > 0)
             return new ResponseEntity<>(this.movieRepository.findAll(), HttpStatus.OK);
@@ -55,6 +55,12 @@ public class MovieController {
         if(this.checkIfMovieAlreadyExists(movie.getName()))
             return new ResponseEntity<>("Movie with given name already exists.",
                     HttpStatus.BAD_REQUEST);
+        //TODO: handle urls properly
+        String url = movie.getImageUrl();
+        if(url.length() > 250)
+            System.out.println("image url too long");
+
+        url = url.length() > 250 ? " " : url;
         this.movieRepository.save(new MovieEntity(
             movie.getMovie_id(),
                 movie.getName(),
@@ -66,8 +72,10 @@ public class MovieController {
                 movie.getBasePrice(),
                 new ArrayList<>(),
                 new ArrayList<>(),
-                this.getActorsWhoPlayedInThisMovie(movie),
-                movie.getImageUrl()
+                new ArrayList<>(),
+                url
+                //this.getActorsWhoPlayedInThisMovie(movie),
+                //movie.getImageUrl()
             ));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

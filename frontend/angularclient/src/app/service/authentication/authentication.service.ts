@@ -20,7 +20,8 @@ export class AuthenticationService {
   public loginUser(user: User): Observable<HttpResponse<any>> {
     return this.http.post<User>(`https://localhost:443/authenticate`, user, { observe: 'response' });
   }
-  public registerUser(user: User): Observable<HttpResponse<any>> {
+  public registerUser(user: User, role: string): Observable<HttpResponse<any>> {
+    user.role = role;
     return this.http.post<User>('https://localhost:443/register', user, { observe: 'response' });
   }
   // tslint:disable-next-line:typedef
