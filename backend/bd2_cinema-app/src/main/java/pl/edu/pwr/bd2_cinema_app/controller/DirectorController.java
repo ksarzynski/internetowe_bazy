@@ -27,6 +27,16 @@ public class DirectorController {
         this.movieRepository = movieRepository;
     }
 
+    @GetMapping("/getMovieDirector")
+    public ResponseEntity<DirectorEntity> getMovieDirector(@RequestParam int movieId){
+        List<DirectorEntity> directors = (List<DirectorEntity>) this.directorRepository.findAll();
+        DirectorEntity director = directors.stream().filter(dir -> dir.getDirectedMovies().stream()
+                .filter(movie -> movieId== movie.getMovie_id()).findFirst().isPresent())
+                .findFirst().get();
+        //TODO: HANDLE NEW MOVIE (NO DIRECTOR IN DB)
+        return new ResponseEntity<>(director, HttpStatus.OK);
+    }
+
     @GetMapping("/getDirector")
     public ResponseEntity<DirectorEntity> getDirector(@RequestParam int id){
         if(this.directorRepository.findById(id).isPresent())

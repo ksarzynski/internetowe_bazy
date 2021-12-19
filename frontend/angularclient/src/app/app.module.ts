@@ -28,6 +28,7 @@ import { SeanceFormComponent } from './forms/seance-form/seance-form.component';
 import { ActorFormComponent } from './forms/actor-form/actor-form.component';
 import { DirectorFormComponent } from './forms/director-form/director-form.component';
 import { MovieFormComponent } from './forms/movie-form/movie-form.component';
+import { MovieEditorComponent } from './movie-editor/movie-editor.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MovieFormComponent } from './forms/movie-form/movie-form.component';
     SeanceFormComponent,
     ActorFormComponent,
     DirectorFormComponent,
-    MovieFormComponent
+    MovieFormComponent,
+    MovieEditorComponent
   ],
   imports: [
     BrowserModule,

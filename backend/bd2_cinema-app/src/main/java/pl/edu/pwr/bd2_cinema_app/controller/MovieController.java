@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.bd2_cinema_app.dto.MovieDTO;
 import pl.edu.pwr.bd2_cinema_app.model.*;
 import pl.edu.pwr.bd2_cinema_app.repository.ActorRepository;
+import pl.edu.pwr.bd2_cinema_app.repository.DirectorRepository;
 import pl.edu.pwr.bd2_cinema_app.repository.MovieRepository;
 
 import java.util.ArrayList;
@@ -19,11 +20,14 @@ public class MovieController {
 
     private final MovieRepository movieRepository;
     private final ActorRepository actorRepository;
+    private final DirectorRepository directorRepository;
 
     @Autowired
-    MovieController(MovieRepository movieRepository, ActorRepository actorRepository){
+    MovieController(MovieRepository movieRepository, ActorRepository actorRepository,
+                    DirectorRepository directorRepository){
         this.movieRepository = movieRepository;
         this.actorRepository = actorRepository;
+        this.directorRepository = directorRepository;
     }
 
     @GetMapping("/getMovie")
@@ -101,5 +105,30 @@ public class MovieController {
                     actors.add(actor);
         }
         return actors;
+    }
+
+    @PostMapping("/updateActors")
+    private ResponseEntity<String> updateActors(@RequestBody List<ActorEntity> actors, @RequestParam int movieId){
+
+        MovieEntity movie = movieRepository.findById(movieId).get();
+
+        movie.setActorsWhoPlayedInThisMovie(actors);
+        this.movieRepository.save(movie);
+        return new ResponseEntity<>("", HttpStatus.OK);
+    }
+
+    @PostMapping("/updateDirector")
+    private ResponseEntity<String> updateDirector(@RequestParam int movieId, @RequestBody int directorId){
+        MovieEntity movie = movieRepository.findById(movieId).get();
+        DirectorEntity director = this.directorRepository.findById(directorId).get();
+        director.getDirectedMovies().add(movie);
+        this.directorRepository.save(director);
+        return new ResponseEntity<>("", HttpStatus.OK);
+    }
+
+    @PostMapping("/updateData")
+    private ResponseEntity<String> updateData(@RequestBody MovieEntity movie){
+        this.movieRepository.save(movie);
+        return new ResponseEntity<>("", HttpStatus.OK);
     }
 }

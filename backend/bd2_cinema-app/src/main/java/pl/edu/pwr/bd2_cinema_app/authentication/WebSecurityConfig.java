@@ -67,7 +67,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/movies/all_movies",
                 "/movies/addMovie",
                 "/actors/addActor",
+                "/actors/actorsFromMovie",
                 "/directors/addDirector",
+                "/directors/getMovieDirector",
+                "/movies/*",
                 "/seances/*")
                 .permitAll().
                         anyRequest().authenticated().and().

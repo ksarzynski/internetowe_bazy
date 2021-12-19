@@ -36,4 +36,14 @@ export class MoviesListComponent implements OnInit {
     this.modalMovie = movie;
     this.modalService.open(id);
   }
+
+  logged_in(){
+    return true;
+  }
+
+  editMovie(movie:movie){
+    this.router.navigate(['/editMovie'], {queryParams: {movieId: movie.movie_id}});
+  }
+  
+  
 }

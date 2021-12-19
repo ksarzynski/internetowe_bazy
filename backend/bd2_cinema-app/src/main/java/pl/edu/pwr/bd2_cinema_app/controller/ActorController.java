@@ -95,4 +95,10 @@ public class ActorController {
             if(!movie.getActorsWhoPlayedInThisMovie().contains(actor))
                 movie.getActorsWhoPlayedInThisMovie().add(actor);
     }
+
+    @GetMapping("/actorsFromMovie")
+    private ResponseEntity<List<ActorEntity>> getActorsFromMovie(@RequestParam int movieId){
+        MovieEntity movie = movieRepository.findById(movieId).get();
+        return new ResponseEntity<>(movie.getActorsWhoPlayedInThisMovie(), HttpStatus.OK);
+    }
 }

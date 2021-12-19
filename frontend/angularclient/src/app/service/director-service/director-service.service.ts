@@ -22,7 +22,10 @@ export class DirectorServiceService {
   }
 
   addDirector(director: director){
-    
     return this.http.post<string>(this.url + '/addDirector', director);
+  }
+
+  getMovieDirector(movieId: number){
+    return this.http.get<director>(this.url + '/getMovieDirector', {params: {movieId: movieId}});
   }
 }
