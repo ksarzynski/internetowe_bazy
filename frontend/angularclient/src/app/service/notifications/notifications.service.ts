@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {NotificationsEnum} from '../../enum/notifications.enum';
 import {NotifierService} from 'angular-notifier';
-import {LoginFormComponent} from "../../forms/login-form/login-form.component";
+import {LoginFormComponent} from "../../login-form/login-form.component";
 
 @Injectable({
   providedIn: 'root'

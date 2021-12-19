@@ -20,9 +20,4 @@ export class DirectorServiceService {
   getDirector(): Observable<director> {
     return this.http.get<director>(this.url + '/getDirector', {params: {name: 'aa', surname: 'bb'}});
   }
-
-  addDirector(director: director){
-    
-    return this.http.post<string>(this.url + '/addDirector', director);
-  }
 }

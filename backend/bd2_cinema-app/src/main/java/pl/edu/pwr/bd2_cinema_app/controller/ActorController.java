@@ -48,21 +48,15 @@ public class ActorController {
         if(this.checkIfActorAlreadyExists(actor.getFirstname(), actor.getSurname()))
             return new ResponseEntity<>("Actor with given firstname and surname already exists.",
                     HttpStatus.BAD_REQUEST);
-        //TODO: handle urls properly
-        String url = actor.getImageUrl();
-        if(url.length() > 250)
-            System.out.println("image url too long");
-
-        url = url.length() > 250 ? " " : url;
         ActorEntity newActor = new ActorEntity(
-                0,
+                actor.getActor_id(),
                 actor.getFirstname(),
                 actor.getSurname(),
                 actor.getDescription(),
-                new ArrayList<>(),
-                url
+                this.getMoviesInWhichTheActorPlayed(actor),
+                actor.getImageUrl()
         );
-        //this.addActorToMovies(newActor);
+        this.addActorToMovies(newActor);
         this.actorRepository.save(newActor);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

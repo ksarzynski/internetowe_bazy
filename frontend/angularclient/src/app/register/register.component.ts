@@ -19,14 +19,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.registerUser(this.user,"client").subscribe((response: HttpResponse<any>) => {
+    this.authService.registerUser(this.user).subscribe((response: HttpResponse<any>) => {
       const username = response.body["username"];
       const email = response.body["email"];
       console.log(username);
       console.log(email);
       window.confirm("Zarejestrowano nowego użytkownika")
     },(error) => {
-      window.confirm("Wystąpił błąd!")
+      console.log("Wystąpił błąd!")
     });
     this.router.navigateByUrl("login");
   }

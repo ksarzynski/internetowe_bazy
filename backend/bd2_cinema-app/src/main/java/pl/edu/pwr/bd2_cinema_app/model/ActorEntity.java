@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "ACTORS")
 public class ActorEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue
     private int actor_id;
     private String firstname;
     private String surname;
