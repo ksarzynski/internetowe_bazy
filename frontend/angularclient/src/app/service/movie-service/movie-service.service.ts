@@ -32,4 +32,8 @@ export class MovieServiceService {
       }
     })
   }
+
+  addMovie(movie: movie) {
+    return this.http.post(this.url + 'addMovie', movie);
+  }
 }
