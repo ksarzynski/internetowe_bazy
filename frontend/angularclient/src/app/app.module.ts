@@ -24,6 +24,12 @@ import { ReservationPageComponent } from './reservation-page/reservation-page.co
 import { ReservationService } from './service/reservation/reservation.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {HttpConfigInterceptorService} from "./interceptor/http-config-interceptor.service";
+import { AddUserFormComponent } from './forms/add-user-form/add-user-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +48,8 @@ import {HttpConfigInterceptorService} from "./interceptor/http-config-intercepto
     ActorsListComponent,
     MoviePageComponent,
     NavbarComponent,
-    ReservationPageComponent
+    ReservationPageComponent,
+    AddUserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,10 @@ import {HttpConfigInterceptorService} from "./interceptor/http-config-intercepto
     ModalModule,
     MatToolbarModule,
     MatGridListModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   exports: [
     MatToolbarModule

@@ -12,6 +12,7 @@ import {DirectorsListComponent} from "./list/directors-list/directors-list.compo
 import {ActorsListComponent} from "./list/actors-list/actors-list.component";
 import {MoviePageComponent} from "./pages/movie-page/movie-page.component";
 import { ReservationPageComponent } from './reservation-page/reservation-page.component';
+import {AddUserFormComponent} from "./forms/add-user-form/add-user-form.component";
 
 const routes: Routes = [
   {path: "login", component: LoginFormComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: '', component: MainpageComponent},
   { path: '*', component: MainpageComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'reservation', component: ReservationPageComponent}
+  {path: 'reservation', component: ReservationPageComponent},
+  {path: 'add_user', component: AddUserFormComponent}
 ];
 @NgModule({
   imports: [

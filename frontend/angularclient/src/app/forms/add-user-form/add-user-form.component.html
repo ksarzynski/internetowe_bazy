@@ -1,0 +1,51 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="user.username"
+               class="form-control"
+               id="name"
+               name="name"
+               placeholder="Enter your name"
+               required #name="ngModel">
+        <div [hidden]="!name.pristine" class="alert alert-danger">Username is required</div>
+      </div>
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input type="text" [(ngModel)]="user.email"
+               class="form-control"
+               id="email"
+               name="email"
+               placeholder="Enter your email"
+               required #name="ngModel">
+        <div [hidden]="!name.pristine" class="alert alert-danger">Mail address is required</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"  [(ngModel)]="user.password"
+               class="form-control"
+               id="password"
+               name="password"
+               placeholder="Enter your password"
+               required #email="ngModel">
+        <div [hidden]="!email.pristine" class="alert alert-danger">Password is required</div>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="role">
+            <mat-option>None</mat-option>
+            <mat-option value="client">client</mat-option>
+            <mat-option value="admin">admin</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <p>You selected: {{role}}</p>
+      </div>
+
+      <button type="submit" [disabled]="!userForm.form.valid"
+              class="btn btn-info">Zarejestruj</button>
+    </form>
+  </div>
+</div>
