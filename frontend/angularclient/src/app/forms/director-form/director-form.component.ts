@@ -21,7 +21,7 @@ export class DirectorFormComponent implements OnInit {
   directorForm = new FormGroup ({
     firstname: new FormControl('', [Validators.required, CustomValidators.specialCharsValidator()]),
     surname: new FormControl('', [Validators.required, CustomValidators.specialCharsValidator()]),
-    description: new FormControl('', [Validators.required, CustomValidators.specialCharsValidator()]),
+    description: new FormControl('', [Validators.required]),
     imageUrl: new FormControl('')
   });
 

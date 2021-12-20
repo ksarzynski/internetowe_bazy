@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {actor} from "../../model/actor/actor";
+import {movie} from "../../model/movie/movie"
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,13 @@ export class ActorServiceService {
   addActor(actor: actor){
     return this.http.post<string>(this.url + '/addActor', actor);
   }
+
+  listActorsFromMovie(movieId: number){
+    return this.http.get<actor[]>(this.url + '/actorsFromMovie', {params: {movieId:movieId}});
+  }
+
+  deleteActor(id: number){
+    return this.http.delete<string>(this.url + '/deleteActor', {params: {id: id}});
+  }
+
 }

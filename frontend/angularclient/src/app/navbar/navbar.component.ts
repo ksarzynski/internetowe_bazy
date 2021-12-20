@@ -32,5 +32,6 @@ export class NavbarComponent implements OnInit {
     this.authentication_service.clearCache();
     environment.userID = null;
     environment.userUsername = "niezalogowano";
+    environment.userRole = "";
   }
 }

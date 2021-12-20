@@ -22,7 +22,14 @@ export class DirectorServiceService {
   }
 
   addDirector(director: director){
-    
     return this.http.post<string>(this.url + '/addDirector', director);
+  }
+
+  getMovieDirector(movieId: number){
+    return this.http.get<director>(this.url + '/getMovieDirector', {params: {movieId: movieId}});
+  }
+
+  deleteDirector(id: number){
+    return this.http.delete<string>(this.url + '/deleteDirector', {params: {id: id}});
   }
 }

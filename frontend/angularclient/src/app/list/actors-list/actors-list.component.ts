@@ -13,8 +13,10 @@ import {ActorServiceService} from "../../service/actor-service/actor-service.ser
 export class ActorsListComponent implements OnInit {
   actors: actor[] = []
   modalActor: actor = {} as actor;
+  role = "";
   constructor(private actorService: ActorServiceService, private router: Router,
               private modalService: ModalService) {
+    this.role = environment.userRole;
   }
 
   ngOnInit(): void {
@@ -35,5 +37,17 @@ export class ActorsListComponent implements OnInit {
   openModal(id: string, actor: actor) {
     this.modalActor = actor;
     this.modalService.open(id);
+  }
+
+  isAdmin(){
+    return this.role === 'admin';
+  }
+  
+  delete(id: number){
+    this.actorService.deleteActor(id).subscribe();
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
+  });
   }
 }
