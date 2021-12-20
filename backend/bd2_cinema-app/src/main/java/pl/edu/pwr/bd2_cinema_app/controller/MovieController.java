@@ -42,7 +42,7 @@ public class MovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/all_movies")
+    @GetMapping("/getMovies")
     public ResponseEntity<Iterable<MovieEntity>> getMovies(){
         if(this.movieRepository.count() > 0)
             return new ResponseEntity<>(this.movieRepository.findAll(), HttpStatus.OK);

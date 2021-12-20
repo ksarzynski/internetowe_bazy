@@ -26,10 +26,8 @@ export class AuthenticationService {
   }
   // tslint:disable-next-line:typedef
   public clearCache() {
-    console.log('Done');
     this.token = '';
     localStorage.removeItem('token');
-
   }
 
   public saveToken(token: string): void {
