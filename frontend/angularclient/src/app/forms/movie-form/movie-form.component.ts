@@ -20,12 +20,12 @@ export class MovieFormComponent implements OnInit {
 
   movieForm = new FormGroup ({
     name: new FormControl('', [Validators.required]),
-    category: new FormControl('', [Validators.required, CustomValidators.specialCharsValidator()]),
-    description: new FormControl('', [Validators.required, CustomValidators.specialCharsValidator()]),
+    category: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
     duration : new FormControl('', [Validators.required, CustomValidators.numberValidator()]),
     pg : new FormControl('', [Validators.required]),
     rating : new FormControl('', [Validators.required]),
-    basePrice: new FormControl('', [Validators.required, CustomValidators.numberValidator()]),
+    basePrice: new FormControl('', [Validators.required, ]),
     
     imageUrl: new FormControl('')
   });

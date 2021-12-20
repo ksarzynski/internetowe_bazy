@@ -26,4 +26,8 @@ export class ActorServiceService {
     return this.http.get<actor[]>(this.url + '/actorsFromMovie', {params: {movieId:movieId}});
   }
 
+  deleteActor(id: number){
+    return this.http.delete<string>(this.url + '/deleteActor', {params: {id: id}});
+  }
+
 }

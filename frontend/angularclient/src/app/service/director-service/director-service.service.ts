@@ -28,4 +28,8 @@ export class DirectorServiceService {
   getMovieDirector(movieId: number){
     return this.http.get<director>(this.url + '/getMovieDirector', {params: {movieId: movieId}});
   }
+
+  deleteDirector(id: number){
+    return this.http.delete<string>(this.url + '/deleteDirector', {params: {id: id}});
+  }
 }

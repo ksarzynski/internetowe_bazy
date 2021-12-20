@@ -8,7 +8,7 @@
         <th scope="col">gatunek</th>
         <th scope="col">ocena</th>
         <th scope="col">dodatkowe informacje</th>
-        <th scope="col" *ngIf="logged_in()">Opcje admina</th>
+        <th scope="col" *ngIf="isAdmin()">Opcje admina</th>
       </tr>
       </thead>
       <tbody>
@@ -18,7 +18,7 @@
         <td>{{ movie.category}}</td>
         <td>{{ movie.rating}}</td>
         <td><button title="informacje" (click)="openModal('custom-modal-1', movie)">informacje</button></td>
-        <td *ngIf="logged_in()"><button (click)="editMovie(movie)">Edytuj informacje</button></td>
+        <td *ngIf="isAdmin()"><button (click)="editMovie(movie)">Edytuj informacje</button></td>
         <div>
           <jw-modal id="custom-modal-1">
             <h1>Informacje o filmie {{modalMovie.name}}</h1>
@@ -32,7 +32,7 @@
       </tbody>
     </table>
   </div>
-  <a routerLink="/addMovie" routerLinkActive="active"><button>Dodaj film</button></a>
+  <a routerLink="/addMovie" routerLinkActive="active" *ngIf="isAdmin()"><button>Dodaj film</button></a>
 </div>
 
 

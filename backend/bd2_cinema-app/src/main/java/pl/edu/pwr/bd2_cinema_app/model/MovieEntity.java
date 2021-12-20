@@ -35,7 +35,7 @@ public class MovieEntity {
     @JoinColumn(name = "movie_review_foreign_key", referencedColumnName = "movie_id")
     private List<ReviewEntity> reviews;
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name= "movie_actor",
             joinColumns = @JoinColumn(name = "movie_id"),
