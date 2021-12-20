@@ -11,9 +11,11 @@ import {AuthenticationService} from "../service/authentication/authentication.se
 })
 export class NavbarComponent implements OnInit {
   username : string = 'niezalogowano';
+  role: string = 'niezalogowano';
 
   constructor(private router : Router, private current_user : CurrentUserService, private authentication_service : AuthenticationService) {
     this.current_user.dataString$.subscribe(nazwa => this.username = nazwa);
+    this.current_user.dataString2$.subscribe(value => this.role = value);
   }
 
   ngOnInit(): void {
@@ -24,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.current_user.saveData("niezalogowano");
+    this.current_user.saveData("niezalogowano","niezalogowano");
     console.log("dziala");
     console.log(localStorage.getItem("token"));
     this.authentication_service.clearCache();

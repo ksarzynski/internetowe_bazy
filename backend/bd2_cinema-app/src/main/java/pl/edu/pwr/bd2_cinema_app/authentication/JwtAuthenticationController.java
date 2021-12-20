@@ -31,11 +31,14 @@ public class JwtAuthenticationController {
 
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
        final String username = userDetails.getUsername();
         final long user_id = userDetailsService.getUserIdByUsername(authenticationRequest.getUsername());
-        return ResponseEntity.ok(new JwtResponse(token, user_id, username));
+        final String role = userDetailsService.getUserRoleByUsername((int) user_id);
+        System.out.println("token " + token);
+        System.out.println("username " +username);
+        System.out.println("role " + role);
+        return ResponseEntity.ok(new JwtResponse(token, user_id, username, role));
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)

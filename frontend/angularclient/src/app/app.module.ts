@@ -24,6 +24,11 @@ import { ReservationPageComponent } from './reservation-page/reservation-page.co
 import { ReservationService } from './service/reservation/reservation.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {HttpConfigInterceptorService} from "./interceptor/http-config-interceptor.service";
+import { AddUserFormComponent } from './forms/add-user-form/add-user-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SeanceFormComponent } from './forms/seance-form/seance-form.component';
 import { ActorFormComponent } from './forms/actor-form/actor-form.component';
 import { DirectorFormComponent } from './forms/director-form/director-form.component';
@@ -52,7 +57,8 @@ import { MovieEditorComponent } from './movie-editor/movie-editor.component';
     ActorFormComponent,
     DirectorFormComponent,
     MovieFormComponent,
-    MovieEditorComponent
+    MovieEditorComponent,
+    AddUserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,10 @@ import { MovieEditorComponent } from './movie-editor/movie-editor.component';
     ModalModule,
     MatToolbarModule,
     MatGridListModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   exports: [
     MatToolbarModule

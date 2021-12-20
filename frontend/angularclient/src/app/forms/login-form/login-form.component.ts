@@ -35,10 +35,12 @@ export class LoginFormComponent implements OnInit {
           const token = response.body["token"];
           const user_id = response.body["userId"];
           const username = response.body["username"];
-          this.current_user.saveData(username);
+          const userRole = response.body["role"];
+          this.current_user.saveData(username,userRole);
           this.authenticationService.saveToken(token);
           environment.userUsername = username;
           environment.userID = user_id;
+
             this.authenticationService.saveToken(token || '{}');
             this.router.navigateByUrl("");
             window.confirm("Zalogowano użytkownika "+ username);

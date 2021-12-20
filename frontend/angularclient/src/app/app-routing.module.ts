@@ -12,6 +12,7 @@ import {DirectorsListComponent} from "./list/directors-list/directors-list.compo
 import {ActorsListComponent} from "./list/actors-list/actors-list.component";
 import {MoviePageComponent} from "./pages/movie-page/movie-page.component";
 import { ReservationPageComponent } from './reservation-page/reservation-page.component';
+import {AddUserFormComponent} from "./forms/add-user-form/add-user-form.component";
 import { ActorFormComponent } from './forms/actor-form/actor-form.component';
 import { DirectorFormComponent } from './forms/director-form/director-form.component';
 import { MovieFormComponent } from './forms/movie-form/movie-form.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'addDirector', component: DirectorFormComponent},
   {path: 'addMovie', component: MovieFormComponent},
   {path: 'editMovie', component: MovieEditorComponent},
+  {path: 'add_user', component: AddUserFormComponent}
 ];
 @NgModule({
   imports: [
