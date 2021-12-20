@@ -1,10 +1,7 @@
 package pl.edu.pwr.bd2_cinema_app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pwr.bd2_cinema_app.dto.CinemaBranchDTO;
 import pl.edu.pwr.bd2_cinema_app.model.CinemaBranchEntity;
 import pl.edu.pwr.bd2_cinema_app.model.CinemaHallEntity;
 import pl.edu.pwr.bd2_cinema_app.model.SeanceEntity;
@@ -58,20 +55,5 @@ public class CinemaBranchController {
             resultList.addAll(cinemaHall.getSeances());
         }
         return resultList;
-    }
-    @PostMapping("/addBranch")
-    public ResponseEntity<String> addBranch(@RequestBody CinemaBranchDTO cinemaBranch){
-        if(this.checkIfBranchAlreadyExist(cinemaBranch))
-            return new ResponseEntity<>("cinema with this name already exists", HttpStatus.BAD_REQUEST);
-        CinemaBranchEntity newCinemaBranch = new CinemaBranchEntity(0,
-                cinemaBranch.getName(),
-                cinemaBranch.getCity(),
-                cinemaBranch.getAddress(),
-                new ArrayList<>());
-        this.cinemaBranchRepository.save(newCinemaBranch);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-    private boolean checkIfBranchAlreadyExist(CinemaBranchDTO cinemaBranch){
-        return this.cinemaBranchRepository.existsByName(cinemaBranch.getName());
     }
 }

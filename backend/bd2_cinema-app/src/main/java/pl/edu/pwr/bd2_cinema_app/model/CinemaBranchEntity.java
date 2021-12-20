@@ -17,7 +17,7 @@ import java.util.List;
 public class CinemaBranchEntity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue
     private int cinema_branch_id;
     private String name;
     // address
