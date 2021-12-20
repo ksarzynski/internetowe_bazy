@@ -42,7 +42,7 @@ INSERT INTO cinema_db.movies VALUES (1, 20.15, 'sci-fi', 'the most well known mo
 
 INSERT INTO cinema_db.movie_actor VALUES (1, 4)^;
 
-INSERT INTO cinema_db.users VALUES (99, 8, 'xd@ex.com', 1, 1, 'hashedpass', 'reviewer_bot')^;
+INSERT INTO cinema_db.users VALUES (99, 8, 'xd@ex.com', 1, 1, 'hashedpass', 'reviewer_bot', 'client')^;
 
 INSERT INTO cinema_db.reviews VALUES (1, 'I really enjoyed this movie', 9, 99, 1)^;
 
