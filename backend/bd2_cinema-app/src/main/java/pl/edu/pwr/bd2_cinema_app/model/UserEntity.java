@@ -25,6 +25,7 @@ public class UserEntity {
     private Integer noReviews;
     private Double averageReview;
     private Integer noBoughtTickets;
+    private String role;
     @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_reservation_foreign_key", referencedColumnName = "user_id")
     private List<ReservationEntity> reservations;
