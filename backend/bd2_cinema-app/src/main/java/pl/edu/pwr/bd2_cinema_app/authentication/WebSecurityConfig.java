@@ -53,22 +53,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 .authorizeRequests().antMatchers(
                         "/authenticate",
-                "/register",
-                "/branches/*",
-                "/branches/*/*",
-                "/movies/getMovies",
-                "/movies/getMovie",
-                "/movies/getMovieByName",
-                "/directors/getDirectors",
-                "/actors/getActors",
-                "/seances/getSeances",
-                "/halls/*",
-                "/reservations/*",
-                "/movies/all_movies",
-                "/movies/addMovie",
-                "/actors/addActor",
-                "/directors/addDirector",
-                "/seances/*")
+                        "/register",
+                        "/branches/*",
+                        "/branches/*/*",
+                        "/movies/getMovies",
+                        "/movies/getMovie",
+                        "/movies/getMovieByName",
+                        "/directors/getDirectors",
+                        "/seances/getSeances",
+                        "/halls/*",
+                        "/reservations/*",
+                        "/movies/all_movies",
+                        "/movies/addMovie",
+                        "/actors/addActor",
+                        "/directors/addDirector",
+                        "/seances/*")
                 .permitAll().
                         anyRequest().authenticated().and().
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
