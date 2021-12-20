@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrl: undefined,
   userID: null,
-  userUsername: "niezalogowano"
+  userUsername: "niezalogowano",
+  userRole: ""
 };
 
 /*

@@ -1,11 +1,11 @@
 export class actor{
-  director_id : number;
+  actor_id : number;
   firstname : string;
   surname : string;
   description : string;
   imageUrl : string;
   constructor() {
-    this.director_id = 0;
+    this.actor_id = 0;
     this.firstname = '';
     this.surname = '';
     this.description = '';

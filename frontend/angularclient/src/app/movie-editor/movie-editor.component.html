@@ -1,0 +1,68 @@
+<div>
+    Edytowany film: {{movie.name}}
+    <button (click)="editActors()">Edytuj aktorów</button>
+    <button (click)="editDirector()">Edytuj reżysera</button>
+    <button (click)="editMovieData()">Edytuj info</button>
+    <button (click)="saveChanges()">Zapisz zmiany</button>
+
+    <jw-modal id="actorsInMovie">
+        <tr>
+            <th scope="col">Imię aktora</th>
+            <th scope="col">Nazwisko aktora</th>
+            <th scope="col">Dodaj/Usuń</th>
+        </tr>
+        <tr *ngFor="let actor of allActors">
+            <td>{{actor.firstname}}</td>
+            <td>{{actor.surname}}</td>
+            <td *ngIf="actorInMovie(actor); else addButton" (click)="toggleActor(actor, false)"><button>Remove from movie</button></td>
+            <ng-template #addButton><td><button (click)="toggleActor(actor, true)">Add to movie</button></td></ng-template>
+        </tr>
+        <button (click)="closeModal('actorsInMovie');">Zamknij</button>
+      </jw-modal>
+
+      <jw-modal id="directorsInMovie">
+        <tr>
+            <th scope="col">Imię aktora</th>
+            <th scope="col">Nazwisko aktora</th>
+            <th scope="col">Dodaj/Usuń</th>
+        </tr>
+        <tr *ngFor="let director of allDirectors">
+            <td>{{director.firstname}}</td>
+            <td>{{director.surname}}</td>
+            <td *ngIf="directorInMovie(director); else addButton" (click)="toggleDirector(director)"><button>Remove from movie</button></td>
+            <ng-template #addButton><td><button (click)="toggleDirector(director)">Add to movie</button></td></ng-template>
+        </tr>
+        <button (click)="closeModal('directorsInMovie');">Zamknij</button>
+      </jw-modal>
+    
+      <jw-modal id="movieEditForm">
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+            <label for="name">Nazwa: </label>
+            <input id="name" type="text" formControlName="name" [(ngModel)]="movie.name">
+          
+            <label for="category">Kategoria: </label>
+            <input id="category" type="text" formControlName="category" [(ngModel)]="movie.category">
+    
+            <label for="description">Opis: </label>
+            <input id="description" type="text" formControlName="description" [(ngModel)]="movie.description">
+    
+            <label for="pg">Pg: </label>
+            <input id="pg" type="text" formControlName="pg" [(ngModel)]="movie.pg">
+    
+            <label for="duration">Czas trwania(min): </label>
+            <input id="duration" type="text" formControlName="duration" [(ngModel)]="movie.duration">
+    
+            <label for="rating">Ocena: </label>
+            <input id="rating" type="text" formControlName="rating" [(ngModel)]="movie.rating">
+    
+            <label for="basePrice">Cena bazowa: </label>
+            <input id="basePrice" type="text" formControlName="basePrice" [(ngModel)]="movie.basePrice">
+    
+            <label for="imageUrl">Url zdjęcia: </label>
+            <input id="imageUrl" type="text" formControlName="imageUrl" [(ngModel)]="movie.imageUrl">
+            
+            <button type="submit" [disabled]="!movieForm.valid">Submit</button>
+        </form>      
+    </jw-modal>
+
+</div>

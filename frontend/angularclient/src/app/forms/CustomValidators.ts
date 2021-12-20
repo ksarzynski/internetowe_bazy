@@ -9,10 +9,11 @@ export class CustomValidators{
         return (control: AbstractControl): ValidationErrors | null => {
             const data: string = control.value; 
             let illegal = [];
-            illegal = [...data].filter(char => !char.match(/[a-z]/));
+            illegal = [...data.toLowerCase()].filter(char => !char.match(/[a-z]/));
             return illegal.length > 0 ? {specialChars: {value: control.value}} : null;
         }
     }
+
 
     //TODO: handle chars being interpreted as nums
     static numberValidator(): ValidatorFn{

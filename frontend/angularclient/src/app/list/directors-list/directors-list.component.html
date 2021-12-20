@@ -6,6 +6,7 @@
         <th scope="col">imie</th>
         <th scope="col">nazwisko</th>
         <th scope="col">dodatkowe informacje</th>
+        <th scope="col" *ngIf="isAdmin()">Usuń</th>
       </tr>
       </thead>
       <tbody>
@@ -13,6 +14,7 @@
         <td>{{ director.firstname }}</td>
         <td>{{ director.surname}}</td>
         <td><button title="dowiedz się więcej" (click)="openModal('custom-modal-1', director)">informacje</button></td>
+        <td *ngIf="isAdmin()"><button (click)=delete(director.director_id)>Usuń</button></td>
         <div>
           <jw-modal id="custom-modal-1">
             <h1>Informacje o rezyserze {{modalDirector.firstname}} {{modalDirector.surname}} </h1>
@@ -26,5 +28,5 @@
       </tbody>
     </table>
   </div>
-  <a routerLink="/addDirector" routerLinkActive="active"><button>Dodaj reżysera</button></a>
+  <a routerLink="/addDirector" routerLinkActive="active" *ngIf="isAdmin()"><button>Dodaj reżysera</button></a>
 </div>
