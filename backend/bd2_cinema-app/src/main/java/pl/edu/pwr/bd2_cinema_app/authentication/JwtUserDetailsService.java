@@ -43,63 +43,10 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setRole(user.getRole());
         return userRepository.save(newUser);
     }
+
+    public String getUserRoleByUsername(int id){return userRepository.findById(id).get().getRole();}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-// zmienneGlobalne.ts
-
-export const user: User = new User();
-
-updateUser(userZApi: User): void {
-        user = userZApi
-        
-        // jak nie zadziala
-        user.id = userZApi.id
-}
-
-
-        
-        
-        
-///////////////////////////////
-import {user} from 'zmienneGlobalne'
-
-
-@Component(
-        //dasd/as
-)
-export class FooComponent implements NgOnInit {
-
-//    const myUser: User
-
-    ngOnInit() {
-//        this.myUser = user
-    }
-
-    constructor() {
-    }
-
-    zrobCos(): void {
-        console.log(user.id)
-    }
-}
-
-*/
 
 
 
