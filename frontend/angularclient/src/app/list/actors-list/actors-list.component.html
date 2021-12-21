@@ -3,6 +3,7 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
+        <th scope="col">#</th>
         <th scope="col">imie</th>
         <th scope="col">nazwisko</th>
         <th scope="col">dodatkowe informacje</th>
@@ -11,6 +12,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let actor of actors">
+        <td>{{ actor.actor_id }}</td>
         <td>{{ actor.firstname }}</td>
         <td>{{ actor.surname}}</td>
         <td><button title="dowiedz się więcej" (click)="openModal('custom-modal-1', actor)">informacje</button></td>
