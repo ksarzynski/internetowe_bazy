@@ -25,6 +25,9 @@
           <jw-modal id="custom-modal-1">
             <h1>Informacje o filmie {{modalMovie.name}}</h1>
             <label>{{modalMovie.description}}</label>
+            <div style="width: 400px; height: auto">
+              <img class="card-img-top" [src]="modalMovie.imageUrl" alt="there should be an image here">
+            </div>
             <form>
             </form>
             <button (click)="closeModal('custom-modal-1');">Zamknij</button>
