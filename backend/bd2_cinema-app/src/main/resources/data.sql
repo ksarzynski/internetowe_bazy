@@ -15,8 +15,8 @@ DELETE FROM cinema_db.actors^;
 DELETE FROM cinema_db.users WHERE user_id>=99^;
 
 
-INSERT INTO cinema_db.cinema_branches VALUES (1, 'add1', 'wro', 'branch1'), (2, 'add2', 'wro', 'branch2'),
-                                             (3, 'add3', 'krk', 'branch3')^;
+INSERT INTO cinema_db.cinema_branches VALUES (1, 'sliczna 13', 'wroclaw', 'wro1'), (2, 'teczowa 15', 'wroclaw', 'wro2'),
+                                             (3, 'superowa 9', 'krakow', 'krk1')^;
 
 
 INSERT INTO cinema_db.cinema_halls VALUES (1, 1, 'hall_1_1', 120, 1), (2, 0, 'hall_1_2', 120, 1),
