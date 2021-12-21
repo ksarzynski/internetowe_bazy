@@ -9,6 +9,7 @@
         <th scope="col">gatunek</th>
         <th scope="col">ocena</th>
         <th scope="col">dodatkowe informacje</th>
+        <th scope="col">dodaj recenzje</th>
         <th scope="col" *ngIf="isAdmin()">Opcje admina</th>
       </tr>
       </thead>
@@ -20,6 +21,7 @@
         <td>{{ movie.category}}</td>
         <td>{{ movie.rating}}</td>
         <td><button title="informacje" (click)="openModal('custom-modal-1', movie)">informacje</button></td>
+        <td><button title="recenzja" (click)="openModal('custom-modal-2', movie)">dodaj recenzje</button></td>
         <td *ngIf="isAdmin()"><button (click)="editMovie(movie)">Edytuj informacje</button></td>
         <div>
           <jw-modal id="custom-modal-1">
@@ -28,9 +30,40 @@
             <div style="width: 400px; height: auto">
               <img class="card-img-top" [src]="modalMovie.imageUrl" alt="there should be an image here">
             </div>
+            <div>
+              <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">recenzja</th>
+                  <th scope="col">ocena</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let review of movieReviews">
+                  <td>{{ review.review_id }}</td>
+                  <td>{{ review.description }}</td>
+                  <td>{{ review.value }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
             <form>
             </form>
             <button (click)="closeModal('custom-modal-1');">Zamknij</button>
+          </jw-modal>
+        </div>
+        <div>
+          <jw-modal id="custom-modal-2">
+            <h1>Dodaj recenzje do filmu: {{modalMovie.name}}</h1>
+            <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(modalMovie.movie_id)">
+              <label for="firstname">Recenzja: </label>
+              <input id="firstname" type="text" formControlName="description" [(ngModel)]="review.description">
+              <label for="surname">Ocena: </label>
+              <input id="surname" type="text" formControlName="value" [(ngModel)]="review.value">
+              <button type="submit" [disabled]="!reviewForm.valid">dodaj</button>
+            </form>
+            <button (click)="closeModal('custom-modal-2');">Zamknij</button>
           </jw-modal>
         </div>
       </tr>
