@@ -3,6 +3,7 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
+        <th scope="col">#</th>
         <th scope="col">tytuł</th>
         <th scope="col">reżyser</th>
         <th scope="col">gatunek</th>
@@ -13,6 +14,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let movie of movies">
+        <td>{{ movie.movie_id}}</td>
         <td>{{ movie.name}}</td>
         <td>{{ movie.director}}</td>
         <td>{{ movie.category}}</td>
