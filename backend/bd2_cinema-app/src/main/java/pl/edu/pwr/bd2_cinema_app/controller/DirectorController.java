@@ -31,7 +31,7 @@ public class DirectorController {
     public ResponseEntity<DirectorEntity> getMovieDirector(@RequestParam int movieId){
         List<DirectorEntity> directors = (List<DirectorEntity>) this.directorRepository.findAll();
         DirectorEntity director = directors.stream().filter(dir -> dir.getDirectedMovies().stream()
-                .filter(movie -> movieId== movie.getMovie_id()).findFirst().isPresent())
+                .anyMatch(movie -> movieId== movie.getMovie_id()))
                 .findFirst().get();
         //TODO: HANDLE NEW MOVIE (NO DIRECTOR IN DB)
         return new ResponseEntity<>(director, HttpStatus.OK);

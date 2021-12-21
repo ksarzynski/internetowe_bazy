@@ -4,6 +4,7 @@ import {ModalService} from "../../modal/_modal";
 import {Router} from "@angular/router";
 import {movie} from "../../model/movie/movie";
 import { environment } from 'src/environments/environment';
+import {DirectorServiceService} from "../../service/director-service/director-service.service";
 
 
 @Component({
@@ -15,7 +16,10 @@ export class MoviesListComponent implements OnInit {
   movies: movie[] = []
   modalMovie: movie = {} as movie
   role: string = "";
-  constructor( private movieService: MovieServiceService, private router: Router, private modalService: ModalService){
+  constructor( private movieService: MovieServiceService,
+               private router: Router,
+               private modalService: ModalService,
+               private directorService: DirectorServiceService){
     this.role = environment.userRole;
   }
 
@@ -28,6 +32,11 @@ export class MoviesListComponent implements OnInit {
   private getMovies() {
     this.movieService.listMovies().subscribe(data => {
       this.movies = data;
+      this.movies.forEach(
+        movie => this.directorService.getMovieDirector(movie.movie_id).subscribe(
+          director => movie.director = director.firstname + ' ' + director.surname
+        )
+      )
     });
   }
 
@@ -42,11 +51,11 @@ export class MoviesListComponent implements OnInit {
 
   isAdmin(){
     return this.role === 'admin';
-  } 
+  }
 
   editMovie(movie:movie){
     this.router.navigate(['/editMovie'], {queryParams: {movieId: movie.movie_id}});
   }
-  
-  
+
+
 }
