@@ -19,6 +19,9 @@
           <jw-modal id="custom-modal-1">
             <h1>Informacje o rezyserze {{modalDirector.firstname}} {{modalDirector.surname}} </h1>
             <label>{{modalDirector.description}}</label>
+            <div style="width: 400px; height: auto">
+              <img class="card-img-top" [src]="modalDirector.imageUrl" alt="there should be an image here">
+            </div>
             <form>
             </form>
             <button (click)="closeModal('custom-modal-1');">Zamknij</button>
