@@ -16,7 +16,7 @@
         <td>{{ actor.firstname }}</td>
         <td>{{ actor.surname}}</td>
         <td><button title="dowiedz się więcej" (click)="openModal('custom-modal-1', actor)">informacje</button></td>
-        <td *ngIf="isAdmin()"><button (click)="delete(actor.actor_id)">Usuń</button></td>
+        <td *ngIf="isAdmin()"><button (click)="confirmDelete(actor)">Usuń</button></td>
         <div>
           <jw-modal id="custom-modal-1">
             <h1>Informacje o aktorze {{modalActor.firstname}} {{modalActor.surname}}</h1>
@@ -32,6 +32,11 @@
       </tr>
       </tbody>
     </table>
+    <jw-modal id="confirm-delete-actors">
+      Czy na pewno chcesz usunąć rekord:  {{modalActor.firstname}} {{modalActor.surname}}?
+        <button (click)="delete(modalActor.actor_id)">Tak</button>
+        <button (click)="closeModal('confirm-delete-actors')">Nie</button>
+    </jw-modal>
   </div>
   <a routerLink="/addActor" routerLinkActive="active" *ngIf="isAdmin()"><button>Dodaj aktora</button></a>
 </div>

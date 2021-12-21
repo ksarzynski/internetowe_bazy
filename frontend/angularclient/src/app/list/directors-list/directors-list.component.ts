@@ -44,6 +44,10 @@ export class DirectorsListComponent implements OnInit {
     return this.role == 'admin';
   }
 
+  confirmDelete(director: director){
+    this.openModal('confirm-delete-directors', director);
+  }
+
   delete(id: number){
     this.directorService.deleteDirector(id).subscribe();
     const currentUrl = this.router.url;

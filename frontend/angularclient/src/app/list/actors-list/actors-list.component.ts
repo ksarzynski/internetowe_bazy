@@ -43,6 +43,10 @@ export class ActorsListComponent implements OnInit {
     return this.role === 'admin';
   }
   
+  confirmDelete(actor: actor){
+    this.openModal('confirm-delete-actors', actor);
+  }
+
   delete(id: number){
     this.actorService.deleteActor(id).subscribe();
     const currentUrl = this.router.url;
