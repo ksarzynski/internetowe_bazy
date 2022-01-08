@@ -53,7 +53,7 @@ public class ActorController {
         if(url.length() > 250)
             System.out.println("image url too long");
 
-        url = url.length() > 250 ? " " : url;
+        url = url.length() > 250 ? "" : url;
         ActorEntity newActor = new ActorEntity(
                 0,
                 actor.getFirstname(),

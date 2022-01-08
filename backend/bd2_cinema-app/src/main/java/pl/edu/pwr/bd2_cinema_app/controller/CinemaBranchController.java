@@ -1,11 +1,16 @@
 package pl.edu.pwr.bd2_cinema_app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.pwr.bd2_cinema_app.dto.ActorDTO;
+import pl.edu.pwr.bd2_cinema_app.dto.CinemaBranchDTO;
 import pl.edu.pwr.bd2_cinema_app.model.CinemaBranchEntity;
 import pl.edu.pwr.bd2_cinema_app.model.CinemaHallEntity;
 import pl.edu.pwr.bd2_cinema_app.model.SeanceEntity;
 import pl.edu.pwr.bd2_cinema_app.repository.CinemaBranchRepository;
+import pl.edu.pwr.bd2_cinema_app.repository.CinemaHallRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +22,13 @@ import java.util.Optional;
 public class CinemaBranchController {
 
     private final CinemaBranchRepository cinemaBranchRepository;
+    private final CinemaHallRepository cinemaHallRepository;
 
     @Autowired
-    CinemaBranchController(CinemaBranchRepository cinemaBranchRepository){
+    CinemaBranchController(CinemaBranchRepository cinemaBranchRepository,
+                           CinemaHallRepository cinemaHallRepository){
         this.cinemaBranchRepository = cinemaBranchRepository;
+        this.cinemaHallRepository = cinemaHallRepository;
     }
 
     @GetMapping("/cinemas")
@@ -28,32 +36,16 @@ public class CinemaBranchController {
         return (List<CinemaBranchEntity>) cinemaBranchRepository.findAll();
     }
 
-    @GetMapping("/seances/{cinemaId}")
-    public List<SeanceEntity> getSeances(@PathVariable("cinemaId") int cinemaID) {
-
-        Optional<CinemaBranchEntity> cinema = cinemaBranchRepository.findById(cinemaID);
-        CinemaBranchEntity cinemaBranchEntity = cinema.get();
-        List<SeanceEntity> resultList = new ArrayList<SeanceEntity>();
-        List<CinemaHallEntity> cinemaHallEntityList = cinemaBranchEntity.getCinemaHalls();
-        for (CinemaHallEntity cinemaHall: cinemaHallEntityList) {
-            resultList.addAll(cinemaHall.getSeances());
-        }
-        return resultList;
+    @PostMapping("/addBranch")
+    public ResponseEntity<String> addCinemaBranch(@RequestBody CinemaBranchDTO cinemaBranch){
+        CinemaBranchEntity newCinemaBranch = new CinemaBranchEntity(cinemaBranch);
+        for(Integer cinemaHallId : cinemaBranch.getCinemaHalls())
+            newCinemaBranch.getCinemaHalls().add(this.cinemaHallRepository.findById(cinemaHallId).get());
+        cinemaBranchRepository.save(newCinemaBranch);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @GetMapping("/seances/{cinemaId}/{seanceName}")
-    public List<SeanceEntity> getSeances(@PathVariable("cinemaId") int cinemaID, @PathVariable("seanceName") String seanceName){
-        Optional<CinemaBranchEntity> cinema = cinemaBranchRepository.findById(cinemaID);
-        CinemaBranchEntity cinemaBranchEntity = cinema.get();
-        List<SeanceEntity> resultList = new ArrayList<SeanceEntity>();
-        List<CinemaHallEntity> cinemaHallEntityList = cinemaBranchEntity.getCinemaHalls();
-        for (CinemaHallEntity cinemaHall: cinemaHallEntityList) {
-            for (SeanceEntity seanceEntity: cinemaHall.getSeances()) {
-                if(seanceEntity.equals(seanceName)){
-                    resultList.add(seanceEntity);
-                }
-            }
-            resultList.addAll(cinemaHall.getSeances());
-        }
-        return resultList;
+
+    private void addSeats(){
+
     }
 }

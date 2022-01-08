@@ -18,6 +18,8 @@ public class SeanceDTO {
     private Integer noAvailableSeats;
     private Double price;
     private String imageUrl;
+    private String movieName;
+    private int cinemaHallId;
 
     public SeanceDTO(SeanceEntity seance, String name){
         this.name = name;
@@ -27,5 +29,6 @@ public class SeanceDTO {
         this.noAvailableSeats = seance.getNoAvailableSeats();
         this.price = seance.getPrice();
         this.imageUrl = seance.getImageUrl();
+        this.cinemaHallId = seance.getCinemaHall().getCinema_hall_id();
     }
 }

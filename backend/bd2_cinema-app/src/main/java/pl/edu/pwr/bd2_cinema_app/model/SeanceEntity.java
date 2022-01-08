@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import pl.edu.pwr.bd2_cinema_app.dto.SeanceDTO;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,7 +22,6 @@ public class SeanceEntity {
     @Id
     @GeneratedValue
     private int seance_id;
-    // We assume that its proper class to store date and time. It may be changed in the future
     private Date startDate;
     private Date endDate;
     private Integer noAvailableSeats;
@@ -41,4 +41,13 @@ public class SeanceEntity {
     @JoinColumn(name = "seance_ticket_foreign_key", referencedColumnName = "seance_id")
     private List<TicketEntity> tickets;
     private String imageUrl;
+
+    public SeanceEntity(SeanceDTO seanceDTO){
+        this.seance_id = seanceDTO.getSeance_id();
+        this.startDate = seanceDTO.getStartDate();
+        this.endDate = seanceDTO.getEndDate();
+        this.noAvailableSeats = seanceDTO.getNoAvailableSeats();
+        this.price = seanceDTO.getPrice();
+        this.imageUrl = seanceDTO.getImageUrl();
+    }
 }

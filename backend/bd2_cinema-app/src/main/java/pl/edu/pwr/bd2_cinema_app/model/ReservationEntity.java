@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import pl.edu.pwr.bd2_cinema_app.utils.ReservationRequestBody;
 
 import javax.persistence.*;
 import java.util.Date;

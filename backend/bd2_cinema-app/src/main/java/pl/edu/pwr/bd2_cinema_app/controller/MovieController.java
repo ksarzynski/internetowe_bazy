@@ -78,8 +78,6 @@ public class MovieController {
                 new ArrayList<>(),
                 new ArrayList<>(),
                 url
-                //this.getActorsWhoPlayedInThisMovie(movie),
-                //movie.getImageUrl()
             ));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -109,9 +107,11 @@ public class MovieController {
 
     @PostMapping("/updateActors")
     private ResponseEntity<String> updateActors(@RequestBody List<ActorEntity> actors, @RequestParam int movieId){
-
-        MovieEntity movie = movieRepository.findById(movieId).get();
-
+        MovieEntity movie;
+        if(movieRepository.findById(movieId).isPresent())
+            movie = movieRepository.findById(movieId).get();
+        else
+            return new ResponseEntity<>("movie doesn't exist", HttpStatus.BAD_REQUEST);
         movie.setActorsWhoPlayedInThisMovie(actors);
         this.movieRepository.save(movie);
         return new ResponseEntity<>("", HttpStatus.OK);

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.pwr.bd2_cinema_app.dto.ReservationDTO;
 import pl.edu.pwr.bd2_cinema_app.model.ReservationEntity;
 import pl.edu.pwr.bd2_cinema_app.model.SeanceEntity;
 import pl.edu.pwr.bd2_cinema_app.model.SeatEntity;
@@ -12,7 +13,6 @@ import pl.edu.pwr.bd2_cinema_app.repository.ReservationRepository;
 import pl.edu.pwr.bd2_cinema_app.repository.SeanceRepository;
 import pl.edu.pwr.bd2_cinema_app.repository.SeatRepository;
 import pl.edu.pwr.bd2_cinema_app.repository.UserRepository;
-import pl.edu.pwr.bd2_cinema_app.utils.ReservationRequestBody;
 
 import java.util.*;
 
@@ -48,7 +48,7 @@ public class ReservationController {
     }
 
     @PostMapping("/makeReservation")
-    public ResponseEntity<Integer> makeReservation(@RequestBody ReservationRequestBody body){
+    public ResponseEntity<Integer> makeReservation(@RequestBody ReservationDTO body){
         ReservationEntity reservation = new ReservationEntity();
         //add reservation
         reservation = this.reservationRepository.save(reservation);
