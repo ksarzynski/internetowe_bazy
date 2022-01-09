@@ -31,8 +31,4 @@ public class CinemaHallEntity {
     @OneToMany(targetEntity = SeatEntity.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cinema_hall_seat_foreign_key", referencedColumnName = "cinema_hall_id")
     private List<SeatEntity> seats;
-    @ManyToOne(targetEntity = SeanceEntity.class, cascade = CascadeType.MERGE)
-    @JsonIgnore
-    @JoinColumn(name = "seance_reservation_foreign_key", referencedColumnName = "seance_id")
-    private List<CinemaBranchEntity> branches;
 }
